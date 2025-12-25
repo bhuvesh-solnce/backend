@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: content-box;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        .page {
+            height: calc(100vh);
+            padding: 2rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid rgba(0, 0, 0, 0.419);
+            border-collapse: collapse;
+            padding: 0.4rem 0.8rem;
+        }
+
+        th {
+            background-color: #0B65BC;
+            color: white;
+            font-weight: normal;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .page-content {
+            height: calc(100vh - (100px + 2rem));
+        }
+
+        .price-summary-heading {
+            width: 180px;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .price-summary-content {
+            flex-grow: 1;
+        }
+
+        ul {
+            list-style-type: circle;
+        }
+
+        li {
+            margin-left: 1rem;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B65BC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page relative">
+        <div class="page-content flex flex-col justify-between">
+            <div class="flex flex-col gap-[2rem]">
+                <section>
+                    <div class="flex w-[220px] flex-col relative">
+                        <img src="{{backend_url}}/solnce-logo.svg" />
+                        <div class="font-semibold text-[0.9rem] break-keep whitespace-nowrap">Solnce Energy Private
+                            Limited</div>
+                    </div>
+                </section>
+                <section>
+                    <div class="flex justify-between">
+                        <div>
+                            <p class="font-bold">To: {{name}}</p>
+                            <p>{{address_1}}, {{address_2}}</p>
+                            <p>{{city}}, {{state}}</p>
+                            <p>{{add_zip_code}}</p>
+                            <p>{{gst_number}}</p>
+                        </div>
+                        <div>
+                            <p class="font-bold">Date: {{todaysDate}}</p>
+                            <p><span class="font-bold">Quotation No:</span> {{quotation_number}}</p>
+                            <p><span class="font-bold">Valid until:</span>{{expiryDate}}</p>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <table class="text-center text-sm">
+                        <thead>
+                            <tr>
+                                <th class="w-[70px]">Sr no.</th>
+                                <th>Services</th>
+                                <th>HSN/SAC Code</th>
+                                <th>Quantity</th>
+                                {{!-- <th>Unit</th> --}}
+                                <th>Price/Unit</th>
+                                <th>GST</th>
+                                <th>Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each quotation_items_details}}
+                            <tr>
+                                <td>{{increment @index}}</td>
+                                <td>{{this.item_name}}</td>
+                                <td>{{this.hsn_sac}}</td>
+                                <td>{{this.quantity}}</td>
+                                {{!-- <td>{{this.unit}}</td> --}}
+                                <td>{{this.price_per_unit}}</td>
+                                <td>{{this.gst_percentage}}%</td>
+                                <td>{{this.total_amount}}</td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </section>
+                {{#if terms_conditions}}
+                {{#if (trim terms_conditions)}}
+                <div class="text-sm">
+                    <p class="font-bold text-xl">Notes</p>
+                    {{{terms_conditions}}}
+                </div>
+                {{/if}}
+                {{/if}}
+            </div>
+            <div class="flex flex-col gap-[2rem]">
+                <div class="flex justify-between items-center gap-2">
+                    <div class="text-[13px] flex-1">
+                        <p class="flex">
+                            <span class="font-bold">Account Holder:&nbsp;</span>
+                            <span>SOLNCE ENERGY PRIVATE LIMITED</span>
+                        </p>
+                        <p class="flex">
+                            <span class="font-bold">Bank Name:&nbsp;</span>
+                            <span>ICICI bank</span>
+                        </p>
+                        <p class="flex">
+                            <span class="font-bold">Branch:&nbsp;</span>
+                            <span>Hazira branch</span>
+                        </p>
+                        <p class="flex">
+                            <span class="font-bold">Account Number:&nbsp;</span>
+                            <span>777705003692</span>
+                        </p>
+                        <p class="flex">
+                            <span class="font-bold">IFSC:&nbsp;</span>
+                            <span>ICIC0000391</span>
+                        </p>
+                    </div>
+                    <div class="flex-1 text-[13px]">
+                        <div class="flex gap-1">
+                            <p class="price-summary-heading">Sub Total :</p>
+                            <p class="price-summary-content">{{amount_without_gst}}</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <p class="price-summary-heading">Taxes :</p>
+                            <p class="price-summary-content">{{gst_total}}
+                                {{!-- ({{gst_percentage}}% GST) --}}
+                            </p>
+                        </div>
+                        <div class="flex gap-1">
+                            <p class="price-summary-heading">Round off :</p>
+                            <p class="price-summary-content">{{round_amount}}</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <p class="price-summary-heading">Total amount :</p>
+                            <p class="price-summary-content">{{final_amount}}</p>
+                        </div>
+                        <div class="flex gap-1">
+                            <p class="price-summary-heading break-keep whitespace-nowrap">Invoice amount in words :</p>
+                            <p class="price-summary-content">{{total_amount_in_words}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-xl">
+                        <p class="font-bold text-primary">Thank you for your business!</p>
+                        <p class="font-semibold">Solnce Energy Private Limited.</p>
+                        <p class="font-semibold">GST: 24ABGCS3520F1C0</p>
+                    </div>
+                    <img class="w-[100px] object-cover" src="{{backend_url}}/solnce-stamp.svg" />
+                </div>
+            </div>
+        </div>
+        <div
+            class="h-[100px] font-semibold text-xs flex justify-between items-center bg-primary text-white absolute left-0 bottom-0 w-full px-[3.5rem] py-[1rem]">
+            <div class="flex flex-col gap-1">
+                <div class="flex gap-1 items-top">
+                    <img class="w-[18px]" src="{{backend_url}}/map.svg" />
+                    <div>
+                        <p>UG-47, Highfield Ascot, VIP Road, opp. Palm Avenue,</->
+                        <p>Vesu, Surat, Gujarat 395007</p>
+                    </div>
+                </div>
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/mail.svg" class="ml-1" />
+                    <a href="mailto:support@solnceenergy.com">support@solnceenergy.com</a>/<a
+                        href="mailto:accounts@solnceenergy.com">accounts@solnceenergy.com</a>
+                </p>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/web.svg" class="ml-1" />
+                    <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+                </p>
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/phone.svg" class="ml-1" />
+                    <a href="tel:7041166814">7041166814</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

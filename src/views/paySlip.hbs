@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        .page {
+            height: calc(100vh);
+            padding: 2rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid rgba(0, 0, 0, 0.419);
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+
+        th {
+            background-color: #0B65BC;
+            color: white;
+            font-weight: normal;
+        }
+
+        .on-account p {
+            white-space: normal;
+            overflow: auto;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B65BC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page relative">
+        <div class="flex flex-col gap-[1rem] flex-1">
+            <div class="flex flex-col gap-8">
+                <div class="flex justify-between gap-16">
+                    <div class="flex flex-col">
+                        <p class="text-primary font-bold text-5xl">Receipt Voucher</p>
+                        <p class="text-primary font-bold text-5xl">for Payment</p>
+                    </div>
+                    <div class="flex w-[200px] flex-col relative">
+                        <img src="{{backend_url}}/solnce-logo.svg" />
+                        <div class="font-semibold text-xs whitespace-nowrap">Solnce Energy Private Limited</div>
+                    </div>
+                </div>
+                <div class="flex justify-between">
+                    <div>
+                        <p class="font-bold">To: {{name}}</p>
+                        <p>{{info_line_1}}</p>
+                        <p>{{info_line_2}}</p>
+                        <p>{{info_line_3}}</p>
+                    </div>
+                    <div>
+                        <p class="font-bold">Date: {{todaysDate}}</p>
+                        <p>Receipt No: {{quotation_number}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex flex-col justify-between flex-[0.9]">
+                <div class="grow flex flex-col gap-16 flex-1">
+                    <table class="text-center text-sm">
+                        <thead>
+                            <tr>
+                                <th class="w-[80px]">Sr no.</th>
+                                <th>Particulars</th>
+                                <th class="w-[100px]">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <div class="w-[60vw] whitespace-normal break-words on-account text-left">
+                                        {{item_description}}
+                                    </div>
+                                </td>
+                                <td>{{item_amount}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="flex justify-end">
+                        <div class="flex flex-col max-w-[350px]">
+                            <div class="flex gap-1">
+                                <div class="flex font-bold justify-between min-w-[42%]">
+                                    <p class=" whitespace-nowrap">Amount in words</p>
+                                    <span>:</span>
+                                </div>
+                                {{!-- <p class="font-bold whitespace-nowrap w-[42%]">Amount in words : </p> --}}
+                                <p class="break-words">{{amount_in_words}}</p>
+                            </div>
+                            <div class="flex gap-1">
+                                <div class="flex font-bold justify-between min-w-[42%]">
+                                    <p class=" whitespace-nowrap">Payment Mode</p>
+                                    <span>:</span>
+                                </div>
+                                {{!-- <p class="font-bold whitespace-nowrap min-w-[42%]">Payment Mode : </p> --}}
+                                <p>{{payment_mode}}</p>
+                            </div>
+                            <div class="flex gap-1">
+                                <div class="flex font-bold justify-between min-w-[42%]">
+                                    <p class=" whitespace-nowrap">On Account of</p>
+                                    <span>:</span>
+                                </div>
+                                {{!-- <p class="font-bold whitespace-nowrap min-w-[42%]">On Account of : </p> --}}
+                                <div class="break-words whitespace-normal overflow-auto on-account">{{{on_account_of}}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-xl">
+                        <p class="font-bold text-primary">Thank you for your business!</p>
+                        <p class="font-semibold">Solnce Energy Private Limited.</p>
+                        <p class="font-semibold">GST: 24ABGCS3520F1ZP</p>
+                    </div>
+                    <img class="w-[100px] object-cover" src="{{backend_url}}/solnce-stamp.svg" />
+                </div>
+            </div>
+        </div>
+        <div
+            class="text-xs flex justify-between bg-primary text-white absolute left-0 bottom-0 w-full px-[3.5rem] py-[1rem]">
+            <div class="flex flex-col gap-1">
+                <div class="flex gap-1 items-top">
+                    <img class="w-[18px]" src="{{backend_url}}/map.svg" />
+                    <div>
+                        <p>UG-47, Highfield Ascot, VIP Road, opp. Palm Avenue,</->
+                        <p>Vesu, Surat, Gujarat 395007</p>
+                    </div>
+                </div>
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/mail.svg" class="ml-1" />
+                    <a href="mailto:support@solnceenergy.com">support@solnceenergy.com</a>/<a
+                        href="mailto:accounts@solnceenergy.com">accounts@solnceenergy.com</a>
+                </p>
+            </div>
+            <div class="flex flex-col gap-1">
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/web.svg" class="ml-1" />
+                    <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+                </p>
+                <p class="flex gap-1 items-center">
+                    <img src="{{backend_url}}/phone.svg" class="ml-1" />
+                    <a href="tel:7041166814">7041166814</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

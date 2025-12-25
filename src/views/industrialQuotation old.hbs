@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        .page {
+            height: calc(100vh - 4rem);
+            padding: 2rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .homepage {
+            height: 100vh;
+            padding: 0px 3.5rem;
+        }
+
+        .banner-logo {
+            width: 320px;
+            height: 160px;
+        }
+
+        .banner-heading {
+            margin-top: auto;
+            font-size: 2rem;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-family: "Poppins";
+            line-height: normal;
+            letter-spacing: 1px;
+        }
+
+        .homepage-background {
+            background-image: url({{home_background}});
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        .home-section {
+            padding-top: 15rem;
+        }
+
+        .text-primary-color {
+            color: #0B65BD;
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: end;
+        }
+
+        .heading-logo {
+            width: 152px;
+            height: 76px;
+        }
+
+        .text-bold {
+            font-weight: bold;
+        }
+
+        .text-bolder {
+            font-weight: bolder;
+        }
+
+        .my-2 {
+            margin: 1.5rem 0rem;
+        }
+
+        .page-bottom {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            font-size: 11px;
+        }
+
+        hr {
+            width: 100%;
+            height: 0.2px;
+            background-color: #1a1a1a;
+        }
+
+        .heading {
+            color: #0B65BD;
+            font-family: 'Poppins', sans-serif;
+            font-size: 21px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            position: relative;
+            margin-left: 1rem;
+        }
+
+        .heading::before {
+            content: '';
+            width: 5px;
+            height: 100%;
+            background-color: #DEB241;
+            position: absolute;
+            top: 0;
+            left: -12px;
+        }
+
+        .bank-partner {
+            display: flex;
+            gap: 0.1rem;
+            flex-wrap: wrap;
+        }
+
+        .bank-logo {
+            padding: 0.2rem;
+            mix-blend-mode: multiply;
+        }
+
+        .reowned-clients-list {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .reowned-client-info {
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+        }
+
+        .reowned-client-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+            position: relative;
+            padding-left: 5px;
+        }
+
+        .reowned-client-desc::before {
+            content: '';
+            width: 2px;
+            height: 100%;
+            background-color: #DEB241;
+            position: absolute;
+            top: 0;
+            left: 0px;
+        }
+
+        td {
+            padding: 0.6rem;
+        }
+
+        th {
+            padding: 0.6rem;
+        }
+
+        .financial-info-section {
+            font-size: 13px;
+            margin-top: 2rem;
+        }
+
+        .estimated-savings-block {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            color: white;
+        }
+
+        .estimated-savings-info {
+            background-color: #0B65BC;
+            padding: 1rem 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            font-size: 14px;
+        }
+
+        .horizontal-line {
+            height: 2px;
+            border: none;
+            background-color: #DEB241;
+            width: 70px;
+        }
+
+        .predicated-energy-output {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .predicated-energy-output-block {
+            display: flex;
+        }
+
+        .predicated-energy-output-img {
+            width: 140px;
+            height: 120px;
+            background-color: #0B65BC;
+        }
+
+        .predicated-energy-output-info {
+            width: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 1rem;
+            font-size: 14px;
+            align-items: center;
+            background-color: lightgray;
+        }
+
+        ul li {
+            margin-left: 1.2rem;
+        }
+
+        .scope-of-work-block {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .scope-of-work-img {
+            width: 210px;
+            height: 140px;
+        }
+
+        .scope-of-work-info ol li {
+            font-size: 12px;
+            margin-left: 1.2rem;
+        }
+
+        .financial-consideration-info ol li {
+            margin-left: 1.2rem;
+        }
+
+        .terms-conditions-info ol li {
+            margin-left: 1.2rem;
+        }
+
+        ol {
+            list-style-type: none;
+            counter-reset: list-counter;
+            font-size: 16px;
+        }
+
+        ol[type="a"] li::before {
+            content: counter(list-counter, lower-alpha) ". ";
+            counter-increment: list-counter;
+            font-weight: bold;
+            color: #DEB241;
+        }
+
+        .last-page {
+            height: 100vh;
+            padding: 0px 3.5rem;
+            background-color: #0B65BC;
+            color: white;
+        }
+
+        .last-page-background {
+            background-image: url({{last_background}});
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center bottom;
+        }
+
+        .last-page-info {
+            width: 300px;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .last-page-spacing {
+            padding: 120px 0 0 0;
+        }
+
+        .last-page-info::before {
+            content: '';
+            width: 5px;
+            height: 100%;
+            background-color: #DEB241;
+            position: absolute;
+            top: 0;
+            left: 0px;
+        }
+
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border-right: 1px solid black;
+            /* Border between columns */
+            padding: 5px;
+            /* Optional: Add padding for cell content */
+        }
+
+        /* Optional: Remove border from last column */
+        td:last-child,
+        th:last-child {
+            border-right: none;
+        }
+
+        th.normal {
+            border: none;
+        }
+
+        td.normal {
+            border: none;
+        }
+
+        tr.title {
+            background-color: #0B65BD;
+            color: white;
+            font-size: 16px;
+        }
+
+        tr.even {
+            background-color: #f3f3f3;
+        }
+
+        tr.odd {
+            background-color: #FFF;
+        }
+    </style>
+</head>
+
+<body>
+    {{!-- Home Page --}}
+    <div class="homepage homepage-background">
+        <div class="home-section">
+            <img class="banner-logo" src="{{backend_url}}/solnce-logo.svg" />
+            <p class="banner-heading">Techno-commercial</p>
+            <p class="banner-heading text-primary-color">Proposal by Solnce</p>
+            <p style="font-size: 1.25rem;">Proposal for: {{customer_name}}</p>
+            <p style="font-size: 1.25rem;">Project Size: {{project_size}} KW</p>
+        </div>
+    </div>
+    {{!-- Page 1 --}}
+    <div class="page">
+        <section class="header-section">
+            <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+        </section>
+        <section style="line-height: 20px; letter-spacing: 1.2px;">
+            <div class="text-primary-color" style="width: 250px; font-size: 0.9rem">
+                <p>Ref: {{quotation_id}}</p>
+                <p>Date: {{quotation_date}}</p>
+                <p>To,</p>
+                <p>{{company_name}}</p>
+                <p>{{company_address}}</p>
+            </div>
+            <section style="font-size: 0.8rem">
+                <div class="my-2">
+                    <span class="text-bolder">Subject:</span>
+                    Proposal for {{project_size}} KW Rooftop Solar Power Plant with {{watt_peak_module}} Wp PV Modules
+                </div>
+                <p class="my-2">Respected Sir,</p>
+                <p class="my-2">We thank you for your valued inquiry on the Solnce App.</p>
+                <p class="my-2">Solnce is India’s first one-stop solar platform with a portfolio of _ till date. Our
+                    vision is to make solar accessible and affordable for all. We aim to provide our customers with a
+                    hassle-free and seamless transition to solar energy. We promise to deliver premium quality at the
+                    best rate.</p>
+                <p>We are pleased to submit our proposition and profile:</p>
+                <ul style="margin-left: 1.2rem;">
+                    <li>Company Profile</li>
+                    <li>BOQ</li>
+                    <li>Techno-Commercial offer</li>
+                    <li>Breakeven</li>
+                    <li>Generation</li>
+                    <li>Scope of work</li>
+                    <li>Payment</li>
+                    <li>Terms of conditions</li>
+                </ul>
+                <p class="my-2">
+                    We trust you will find our offer in line with your requirements and hope to receive your positive
+                    response. Should you require any further clarifications/confirmations please feel free to revert.
+                </p>
+                <p>Thanking you,</p>
+                <h4>Solnce Energy Pvt Limited</h4>
+            </section>
+        </section>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 1</p>
+        </div>
+    </div>
+    {{!-- Page 2 --}}
+    <div class="page">
+        <section class="header-section">
+            <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+        </section>
+        <div class="heading">Company Profile</div>
+        <section id="company-profile-section">
+            {{!-- <h4>Our Achievement & Client:</h4> --}}
+            <p class="my-2">
+                Established in 2021, and headquartered in Surat, Solnce is India’s first one-stop solar app. We serve as
+                a comprehensive one-stop solution for all solar needs, providing services like government procedure
+                assistance, solar loans, seamless installation, and post-installation cleaning and maintenance.
+            </p>
+            <p class="my-2">
+                We have our Solar application which is available on android and iOS which will help you with the entire
+                project management process. You will have updates on the status of your project on the app itself.
+            </p>
+            <p class="my-2">
+                With a proven track record spanning over 3+ years, Solnce has successfully executed 1000+ projects(solar
+                installation, cleaning & maintenance), earning the satisfaction of 700+ customers, and with a total
+                portfolio spanning 10 MW+.
+            </p>
+            <p class="my-2">
+                Our vision is to make solar affordable and accessible to all. We aim to provide customers with a
+                hassle-free, seamless, and digitised transition to solar energy. We promise to deliver the best quality
+                at the best rate.
+            </p>
+            <p class="my-2">
+                Solnce- your solar mate for life.
+            </p>
+        </section>
+        <section id="bank-partner-section">
+            <h4>Bank and panel company partner:</h4>
+            <div class="bank-partner">
+                <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                    {{#timesWithCounter 9}}
+                    {{#if (isLess 6 index)}}
+                    <img class="bank-logo" src="{{imageUrl}}" alt="Image {{index}}" width="{{width}}"
+                        height="{{height}}" />
+                    {{/if}}
+                    {{/timesWithCounter}}
+                </div>
+                <div style="display: flex; justify-content: space-between; width: 100%; align-items: center;">
+                    {{#timesWithCounter 9}}
+                    {{#if (isGreater 5 index)}}
+                    <img class="bank-logo" src="{{imageUrl}}" alt="Image {{index}}" width="{{width}}"
+                        height="{{height}}" />
+                    {{/if}}
+                    {{/timesWithCounter}}
+                </div>
+            </div>
+        </section>
+
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 2</p>
+        </div>
+    </div>
+    {{!-- Page 3 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <section id="reowned-clients-section">
+                <div class="heading my-2">List of renowned clients</div>
+                {{!-- <ul class="mb-2" style="margin-left: 1.2rem; margin-bottom: 2rem;">
+                    {{#each ReOwnedClients}}
+                    <li class="my-1">
+                        <p>{{name}}: <strong>{{capacity}}</strong></p>
+                    </li>
+                    {{/each}}
+                </ul> --}}
+                {{#each ReOwnedCategorisedClients}}
+                {{#if (isLess 5 @index)}}
+                <table class="my-2" style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+                    <thead style="font-size: 16px;">
+                        <tr class="title">
+                            <th class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{category}}</th>
+                            <th class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">kw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each clients}}
+                        <tr class="{{#if (isEven @index)}}even{{else}}odd{{/if}}" style="font-size: 13px;">
+                            <td class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{name}}</td>
+                            <td class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">{{KW}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+                {{/each}}
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 3</p>
+        </div>
+    </div>
+    {{!-- Page 4 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <section id="reowned-clients-section">
+                {{#each ReOwnedCategorisedClients}}
+                {{#if (isGreater 4 @index)}}
+                {{#if (isLess 7 @index)}}
+                <table class="my-2" style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+                    <thead style="font-size: 16px;">
+                        <tr class="title">
+                            <th class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{category}}</th>
+                            <th class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">kw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each clients}}
+                        <tr class="{{#if (isEven @index)}}even{{else}}odd{{/if}}" style="font-size: 13px;">
+                            <td class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{name}}</td>
+                            <td class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">{{KW}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+                {{/if}}
+                {{/each}}
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 4</p>
+        </div>
+    </div>
+    {{!-- Page 5 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <section id="reowned-clients-section">
+                {{#each ReOwnedCategorisedClients}}
+                {{#if (isGreater 6 @index)}}
+                {{#if (isLess 9 @index)}}
+                <table class="my-2" style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+                    <thead style="font-size: 16px;">
+                        <tr class="title">
+                            <th class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{category}}</th>
+                            <th class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">kw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each clients}}
+                        <tr class="{{#if (isEven @index)}}even{{else}}odd{{/if}}" style="font-size: 13px;">
+                            <td class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{name}}</td>
+                            <td class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">{{KW}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+                {{/if}}
+                {{/each}}
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 5</p>
+        </div>
+    </div>
+    {{!-- Page 6 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <section id="reowned-clients-section">
+                {{#each ReOwnedCategorisedClients}}
+                {{#if (isGreater 8 @index)}}
+                <table class="my-2" style="border-collapse: collapse; width: 100%; border: 1px solid black;">
+                    <thead style="font-size: 16px;">
+                        <tr class="title">
+                            <th class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{category}}</th>
+                            <th class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">kw</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each clients}}
+                        <tr class="{{#if (isEven @index)}}even{{else}}odd{{/if}}" style="font-size: 13px;">
+                            <td class="normal"
+                                style="text-align: left; padding-left: 5%; width: 85%; padding-top: 5px; padding-bottom: 5px;">
+                                {{name}}</td>
+                            <td class="normal"
+                                style="text-align: center; width: 15%; padding-top: 5px; padding-bottom: 5px;">{{KW}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+                {{/if}}
+                {{/each}}
+                <div class="reowned-clients-list">
+                    {{#each ReOwnedClients}}
+                    {{#if (isLess 8 @index)}}
+                    <div class="reowned-client-info">
+                        <img src="{{imageUrl}}" alt="{{name}}" width="150px" height="auto">
+                        {{!-- <div class="reowned-client-desc">
+                            <p style="font-size: 7px;">{{name}}</p>
+                            <p style="font-size: 11px;" class="text-primary-color text-bold">Capacity: {{capacity}}</p>
+                        </div> --}}
+                    </div>
+                    {{/if}}
+                    {{/each}}
+                </div>
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 6</p>
+        </div>
+    </div>
+    {{!-- Page 7 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="heading my-2">Preliminary Bill of Materials</div>
+            <table>
+                <thead style="font-size: 16px;">
+                    <tr class="title">
+                        <th>Component</th>
+                        <th>Specification</th>
+                        <th>Quantity</th>
+                        <th>Make</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 11px;">
+                    <tr class="even">
+                        <td>PV Modules</td>
+                        <td>{{pv_module}}</td>
+                        <td>{{pv_module_quantity}}</td>
+                        <td>{{pv_module_make}}</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>Inverter</td>
+                        <td>
+                            <p>{{inverter_specification}} KW</p>
+                            <p>AC On-grid Inverter</p>
+                            <p>Output: 415 Vac, 3-phase</p>
+                        </td>
+                        <td>{{inverter_quantity}}</td>
+                        <td>{{inverter_make}}</td>
+                    </tr>
+                    <tr class="even">
+                        <td>Mounting Structure</td>
+                        <td>{{mounting_structure_specification}}</td>
+                        <td>As per design</td>
+                        <td>Reputed Make</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>DC & AC Cables Earthing Cables</td>
+                        <td>As per electrical standard</td>
+                        <td>As per design</td>
+                        <td>Polycab/RR</td>
+                    </tr>
+                    <tr class="even">
+                        <td>ACDB/DCDB Combiner Box</td>
+                        <td>As per electrical standard</td>
+                        <td>As per design</td>
+                        <td>Reputed Make</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 7</p>
+        </div>
+    </div>
+    {{!-- Page 8 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="my-2" style="display: flex; justify-content: space-between;">
+                <div class="heading">Financial</div>
+                <p style="font-size: 13px;" class="text-primary-color text-bold">Price Validity: {{financial_date}}</p>
+            </div>
+            <table>
+                <thead>
+                    <tr class="title">
+                        <th>Description</th>
+                        <th>Cost/wp</th>
+                        <th>Cost (INR)</th>
+                    </tr>
+                </thead>
+                <tbody style="font-size: 13px;">
+                    <tr class="even">
+                        <td>Basic cost of {{project_size}} KWp PV Solar Rooftop system(without GST)</td>
+                        <td>{{cost_per_KW}}</td>
+                        <td>{{cost_without_GST}}</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>GST(8.9%)</td>
+                        <td></td>
+                        <td>{{cost_of_GST}}</td>
+                    </tr>
+                    <tr class="even">
+                        <td>Cleaning & Maintenance System</td>
+                        <td></td>
+                        <td>{{showIncluded is_cleaning_charge_included}}</td>
+                    </tr>
+                    {{#if (eq is_ndcr 'true')}}
+                    <tr class="odd">
+                        <td>GEDA charges</td>
+                        <td></td>
+                        <td>{{ showIncluded is_GEDA_charge_included }}</td>
+                    </tr>
+                    {{/if}}
+                    <tr class="{{#if (eq is_ndcr 'true')}}even{{else}}odd{{/if}}">
+                        <td>Meter Charges</td>
+                        <td></td>
+                        <td>{{showIncluded is_meter_charge_included}}</td>
+                    </tr>
+                    <tr class="{{#if (eq is_ndcr 'true')}}odd{{else}}even{{/if}}">
+                        <td>Final Cost of PV Solar Rooftop System </td>
+                        <td></td>
+                        <td>{{total_cost}}</td>
+                    </tr>
+                    {{#if (eq sub_service_id '44')}}
+                    {{#if (eq is_ndcr 'false')}}
+                    <tr class="odd">
+                        <td>Total subsidy</td>
+                        <td></td>
+                        <td>-{{ total_subsidy }}</td>
+                    </tr>
+                    <tr class="even">
+                        <td>Effective cost</td>
+                        <td></td>
+                        <td>{{ cost total_cost total_subsidy }}</td>
+                    </tr>
+                    {{/if}}
+                    {{/if}}
+                </tbody>
+            </table>
+            <section class="financial-info-section">
+                <div>
+                    <p class="flex">
+                        <span class="text-bold">Account Holder:&nbsp;</span>
+                        <span>SOLNCE ENERGY PRIVATE LIMITED</span>
+                    </p>
+                    <p class="flex">
+                        <span class="text-bold">Bank Name:&nbsp;</span>
+                        <span>ICICI bank</span>
+                    </p>
+                    <p class="flex">
+                        <span class="text-bold">Branch:&nbsp;</span>
+                        <span>Hazira branch</span>
+                    </p>
+                    <p class="flex">
+                        <span class="text-bold">Account Number:&nbsp;</span>
+                        <span>777705003692</span>
+                    </p>
+                    <p class="flex">
+                        <span class="text-bold">IFSC:&nbsp;</span>
+                        <span>ICIC0000391</span>
+                    </p>
+                </div>
+                <h4 style="margin: 1rem 0px;" class="text-primary-color">Payment Terms:</h4>
+                <ul>
+                    <li>10% of the Total Project Cost in advance</li>
+                    <li>40% of Total Project Cost before delivery of structure materials.</li>
+                    <li>40% of total Project Cost before delivery of module and BOS.</li>
+                    <li>Balance 10% of Total Project Cost after commissioning of the project by CEI.</li>
+                </ul>
+                <p>Note: The net meter file will be submitted only after completing 100% Payment.</p>
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 8</p>
+        </div>
+    </div>
+    {{!-- Page 9 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <h4 style="margin: 1rem 0px;" class="text-primary-color">Project Terms:</h4>
+            <ul>
+                <li>Prices are inclusive of all Taxes.</li>
+                <li>Load extension or any other expenses from DISCOM such as System Strengthening/ Asset Shifting
+                    Deposit/Meter Box Revamping) will be in the customer's scope.</li>
+                <li>MCB/ELCB at GEB/Torrent Meter will be in the client scope (if required).</li>
+                <li>A remote monitoring system will be provided by us, and the cost of the SIM Card.</li>
+                <li>SIM card or wifi facility to be borne by the customer.</li>
+                <li>1 Year Non-Comprehensive Breakdown Maintenance Service.</li>
+                <li>Any changes that need to be done in the existing electrical infra will be in the client's scope.
+                </li>
+                <li>Access to Rooftop / Shed in the client's scope Also Space for safe and secure storage is in the
+                    client's scope.</li>
+                <li>Water and power required during execution in client scope.</li>
+                <li>All the terms & conditions will be applicable as per the current policy.</li>
+                <li>Any items not mentioned in the bill of material shall be charged extra and will be to the customer’s
+                    account.</li>
+                <li>After order placement and before solar module supply, any major price escalation coming in module
+                    rates due to any reason, then the same escalation shall be borne by the customer.</li>
+                <li>If any changes arrive in the Government Policy related to solar, then the same will applicable to
+                    the client.</li>
+                <li>If the government will impose basic customs duty or any other duty or charges on solar project items
+                    then our rates shall be revised accordingly.</li>
+                <li>In case from the Government side any GST rate revision, then the same rate will be applicable in our
+                    offer (GST shall be applicable at actual at the actual time of project billing.)</li>
+                <li>If any extension in the Project Completion Period (3 Months) due to any modification in the existing
+                    roof or new construction is required for the Solar Power Plant then the contract rate will be
+                    revised as per the market scenario and the customer have to bear the difference as per new rate.
+                </li>
+                <li>If there will be any delay in payment as per terms by the customer side, the Customer has to bear
+                    the difference as per the new rate.</li>
+            </ul>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 9</p>
+        </div>
+    </div>
+    {{!-- Page 10 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="heading my-2">Estimated Savings:</div>
+            <p style="font-size: 13px;">The estimated savings using Solar for the next 25 years along with Total
+                Savings, Payback Period, and ROI.</p>
+            <div class="estimated-savings-block">
+                <div class="estimated-savings-info">
+                    <p style="font-size: 14px;">Estimated Savings</p>
+                    <hr class="horizontal-line" />
+                    <p style="font-size: 18px;">{{estimated_saving}} INR</p>
+                </div>
+                <div class="estimated-savings-info">
+                    <p style="font-size: 14px;">Payback Period</p>
+                    <hr class="horizontal-line" />
+                    <p style="font-size: 18px;">{{payback_period}}</p>
+                </div>
+                <div class="estimated-savings-info">
+                    <p style="font-size: 14px;">Return on investment</p>
+                    <hr class="horizontal-line" />
+                    <p style="font-size: 18px;">{{return_of_investment}} %</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+                <div style="font-size: 1rem;">
+                    <p class="text-primary-color">Price:</p>
+                    <p>{{total_cost}}</p>
+                </div>
+                <div style="font-size: 1rem;">
+                    <p class="text-primary-color">Tax:</p>
+                    <p>8.9 %</p>
+                </div>
+                <div style="font-size: 1rem;">
+                    <p class="text-primary-color">Expected Life Years:</p>
+                    <p>{{expected_life_year}}</p>
+                </div>
+            </div>
+            <div style="width: 59%;">
+                <canvas class="my-2" id="myChart"></canvas>
+            </div>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 10</p>
+        </div>
+    </div>
+    {{!-- Page 11 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="heading my-2">Predicted Energy Output from {{project_size}}KWp Solar Plant</div>
+            <div class="predicated-energy-output">
+                {{!-- <div class="predicated-energy-output-block">
+                    <div class="predicated-energy-output-img">
+
+                    </div>
+                    <div class="predicated-energy-output-info">
+                        <p><span class="text-bold">Jan: </span>{{getPropertyAtIndex generation_calculation 0 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Feb: </span>{{getPropertyAtIndex generation_calculation 1 'output'}}
+                            KW</p>
+                    </div>
+                </div>
+                <div class="predicated-energy-output-block">
+                    <div class="predicated-energy-output-img">
+
+                    </div>
+                    <div class="predicated-energy-output-info">
+                        <p><span class="text-bold">Mar: </span>{{getPropertyAtIndex generation_calculation 2 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Apr: </span>{{getPropertyAtIndex generation_calculation 3 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">May: </span>{{getPropertyAtIndex generation_calculation 4 'output'}}
+                            KW</p>
+                    </div>
+                </div>
+                <div class="predicated-energy-output-block">
+                    <div class="predicated-energy-output-img">
+
+                    </div>
+                    <div class="predicated-energy-output-info">
+                        <p><span class="text-bold">Jun: </span>{{getPropertyAtIndex generation_calculation 5 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Jul: </span>{{getPropertyAtIndex generation_calculation 6 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Aug: </span>{{getPropertyAtIndex generation_calculation 7 'output'}}
+                            KW</p>
+                    </div>
+                </div>
+                <div class="predicated-energy-output-block">
+                    <div class="predicated-energy-output-img">
+
+                    </div>
+                    <div class="predicated-energy-output-info">
+                        <p><span class="text-bold">Sep: </span>{{getPropertyAtIndex generation_calculation 8 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Oct: </span>{{getPropertyAtIndex generation_calculation 9 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Nov: </span>{{getPropertyAtIndex generation_calculation 10 'output'}}
+                            KW</p>
+                        <p><span class="text-bold">Dec: </span>{{getPropertyAtIndex generation_calculation 11 'output'}}
+                            KW</p>
+                    </div>
+                </div> --}}
+                <div class="predicated-energy-output-block"
+                    style="margin-top: 10% !important; margin-left: 5% !important; justify-content: space-around;">
+                    <img src="{{backend_url}}/weather1.png" style="width: 17%;" />
+                    <img src="{{backend_url}}/weather2.png" style="width: 17%;" />
+                    <img src="{{backend_url}}/weather3.png" style="width: 17%;" />
+                    <img src="{{backend_url}}/weather1.png" style="width: 17%;" />
+                </div>
+                <div style="width: 59%;">
+                    <canvas class="my-2" id="predictedEnergyOutput"></canvas>
+                </div>
+            </div>
+            <p class="my-2 text-bold"> Actual plant generation output may vary depending on local conditions like:</p>
+            <ul style="margin-bottom: 25% !important;">
+                <li>Dust collection on surface of panels.</li>
+                <li>Availability of sufficient load to ensure complete utilization of energy generated</li>
+            </ul>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 11</p>
+        </div>
+    </div>
+    {{!-- Page 12 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="heading my-2">Scope of Work:</div>
+            <section id="scope-of-work-section">
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-1.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Government Liasoning Work
+                        </div>
+                        <ol type="a">
+                            <li>GEDA Approval</li>
+                            <li>DISCOM Approval</li>
+                            <li>CEIG Drawing Approvals</li>
+                            <li>CEIG Certification</li>
+                            <li>Other govt. departmental visits and approval</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-2.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Field Analysis & Civil Work
+                        </div>
+                        <ol type="a">
+                            <li>Panel mounting platforms</li>
+                            <li>Earthing pits</li>
+                            <li>LT Electrification</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-3.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Preparing Design & Engineering Documents
+                        </div>
+                        <ol type="a">
+                            <li>SLD Drawing</li>
+                            <li>Layout Drawing</li>
+                            <li>Mounting Structure designing</li>
+                            <li>Mounting structure design certification</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 12</p>
+        </div>
+
+    </div>
+    {{!-- Page 13 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <div class="heading my-2">Scope of Work:</div>
+            <section id="scope-of-work-section">
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-4.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Material procurement and handling
+                        </div>
+                        <ol type="a">
+                            <li>Specified material purchase & inspection</li>
+                            <li>Material transportation to the site and unloading</li>
+                            <li>Intra-plant material handling</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-5.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Structure, modules, inverters, & AC/DC system installation
+                        </div>
+                        <ol type="a">
+                            <li>Structure erection</li>
+                            <li>Module Fitting</li>
+                            <li>AC/DC cable and conduit pipe laying</li>
+                            <li>Inverters & CMB fitting</li>
+                            <li>ESE lightning arresters fitting</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="scope-of-work-block">
+                    <img class="scope-of-work-img" src="{{backend_url}}/scope_of_work-6.svg" />
+                    <div class="scope-of-work-info">
+                        <div class="scope-of-work-title heading" style="font-weight: normal;">
+                            Meter installation and synchronization of the power plant.
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 13</p>
+        </div>
+    </div>
+    {{!-- Page 14 --}}
+    <div class="page">
+        <section class="header-section">
+            <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+        </section>
+        <section class="financial-consideration-block">
+            <div class="heading my-2">Financial Consideration:</div>
+            <section class="financial-consideration-info" style="font-size: 13px;">
+                <ol type="i">
+                    <li class="my-1"><span class="text-bold">i) Cost - Annual energy degradation:</span> <span>There
+                            will be an annual 1% deduction in energy generation as per degradation in the generation
+                            capacity of Solar Panels.</span></li>
+                    {{!-- <li><span class="text-bold">Cost of Increment/Decrement of load,</span><span>name change in
+                            light bill/vera bill, or any other documents rectification cost will be in the scope of the
+                            customer.</span></li> --}}
+                    <li class="my-1"><span class="text-bold">ii) AMC: </span><span>After 1 year of the COD date, an
+                            additional charge per year of INR 0.5/Watt will be the cost of non-comprehensive AMC
+                            (Exceptional)</span></li>
+                </ol>
+            </section>
+        </section>
+        <section class="terms-conditions-block">
+            <div class="heading my-2">Terms & Conditions:</div>
+            <section class="terms-conditions-info" style="font-size: 18px;">
+                <ol type="1">
+                    <li class="my-1"><span class="text-bold">1.Price: </span><span>All material prices are considered as
+                            per prevalent market rates based on the current rate of Import duty and safeguard duty and
+                            Foreign exchange rate of INR to US as on the date of signing, Any changes in either of the
+                            above on the date of procurement of the materials will be applicable as per the rate
+                            prevalent on the date of procurement.</span></li>
+                    <li class="my-1"><span class="text-bold">2.Taxes & Duties on EPC: </span><span>GST slab, Custom
+                            Duty, and Safe Guard Duty are as prevalent as on date, this shall be charged at an actual
+                            rate on the date of supply.</span></li>
+                    <li class="my-1"><span class="text-bold">3.Guarantee & Warrantees: </span><span>The actual Guarantee
+                            of all components of the Solar PV Power Plant are as per extended by OEMs. The Solar PV
+                            Panels will have a normative performance warranty of 25-30 years as extended by the OEM, a
+                            Solar Inverter for 5-10 years as extended by the OEM, and BOS for 1 year as per norms
+                            committed by the OEM.</span></li>
+                    <li class="my-1"><span class="text-bold">4.Force Majeure: </span><span>All conditions of performance
+                            under this offer are subject to the standard force majeure clause.</span></li>
+                    <li class="my-1"><span class="text-bold">5.Validity of offer: </span><span>This offer is valid up to
+                            7 days from the date of offer, then after subject to written confirmation.</span></li>
+                    <li class="my-1"><span class="text-bold">6.Interruption in Work: </span><span>The Customer must not
+                            interrupt the works, and/or shall abstain from any act or omission of which it can
+                            reasonably be expected that it may delay the works or make the works more difficult and or
+                            expensive for Solnce Private Energy Limited.</span></li>
+                    <li class="my-1"><span class="text-bold">7.Deemed Export of Power: </span><span>The Project shall be
+                            termed as commissioned when Solnce Energy Private Limited evacuates the power generated to
+                            the Customer grid. However, in the case where Solnce energy private limited has completed
+                            its duties as per the scope of duties mentioned in the Purchase Order, and the Project
+                            cannot be commissioned due to any act/inaction on the part of Customer, or due to
+                            unavailability of Customer grid, then the Project shall be deemed to be commissioned and
+                            Solnce Private Energy Limited shall be deemed to have completed its part of obligations
+                            under the Purchase Order.</span></li>
+                </ol>
+            </section>
+        </section>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 14</p>
+        </div>
+    </div>
+    {{!-- Page 15 --}}
+    <div class="page">
+        <div>
+            <section class="header-section">
+                <img class="heading-logo" src="{{backend_url}}/solnce-logo.svg" />
+            </section>
+            <section class="terms-conditions-block">
+                <section class="terms-conditions-info" style="font-size: 16px;">
+                    <ol type="1" start="9">
+                        <li class="my-1"><span class="text-bold">8.Security and Safety: </span><span>On delivery of
+                                supplies to Customer’s site in good condition, Customer shall be responsible for the
+                                safety & security of the materials till handing over of the same to Solnce Energy
+                                Private Limited designated personnel for installation. In case there are public
+                                disturbances at the site that are not exclusively attributable to Solnce Energy Private
+                                Limited, Customer shall resolve the same at its own risk & cost, for smooth execution of
+                                the project by Solnce energy private limited. In such case, Customer shall provide
+                                safety & security for the Solnce Energy Private Limited designated personnel working at
+                                the site. Any delay in execution or damage of materials due to public disturbances at
+                                the site shall be attributable to and compensated by the Customer.</span></li>
+                        <li class="my-1"><span class="text-bold">9.Insurance: </span><span>On commissioning of the solar
+                                power plant, suitable asset insurance will have to be arranged by the Customer at its
+                                own cost since the asset is in the name of the customer.</span></li>
+                        <li class="my-1"><span class="text-bold">10.Publicity Rights: </span><span>The Customer agrees
+                                and gives its irrevocable and unconditional consent to Solnce Energy Private Limited to
+                                issue any press release or announcement relating to this Proposal, or any resultant
+                                Agreement, or use the data, photographs, designs, etc. of the solar power plant for its
+                                publicity and/or marketing activities or use the same for publication anywhere. Solnce
+                                Energy Private Limited understands and agrees that no such usage shall be in a manner
+                                defamatory to the Customer.</span></li>
+                        <li class="my-1"><span class="text-bold">11.Arbitration: </span><span>Any dispute, including
+                                claims seeking redress or asserting rights under applicable law, shall, be resolved and
+                                finally settled per the provisions of the Arbitration and Conciliation Act, 1996, as may
+                                be amended from time to time or its re-enactment. The arbitral tribunal shall be
+                                composed of two arbitrators to be appointed by each of the parties and the third
+                                arbitrator shall be appointed by the arbitrators appointed by the parties and for such
+                                arbitration, the seat of arbitration shall be in Gujarat, India.</span></li>
+                        <li class="my-1"><span class="text-bold">12.Governing Law and Jurisdiction: </span><span>All
+                                questions concerning the construction, validity, and interpretation of this Proposal or
+                                any resultant Agreement will be governed by the laws of India, and the courts at
+                                Gujarat, India shall have exclusive jurisdiction concerning any dispute that occurs
+                                hereof. No remedy described in this Proposal or any resultant Agreement shall in any way
+                                limit the parties’ remedies available at law, in equity or otherwise concerning any
+                                breach or threatened breach of the terms and condition of the Proposal by any defaulting
+                                party, and any party may seek a restrictive injunction from an appropriate court of law
+                                to safeguard its interests.</span></li>
+                    </ol>
+                </section>
+            </section>
+        </div>
+        <div class="page-bottom">
+            <a href="www.solnceenergy.com">www.solnceenergy.com</a>
+            <hr color="#DEB241" />
+            <p style="width: 100px;">Page 15</p>
+        </div>
+    </div>
+    {{!-- Page 16 --}}
+    <div class="last-page last-page-background">
+        <div class="" style="font-size: 13px;">
+            <div class="last-page-spacing"></div>
+            <div class="last-page-info">
+                <p class="text-bold">Thanking You,</p>
+                <p class="text-bold">Yours Sincerely,</p>
+                <p>{{employee_name}}</p>
+                <p>{{employee_number}}</p>
+                <p class="text-bold">Solnce Energy Private Limited</p>
+                <p>UG-47, Highfield Ascot, VIP Road, opp. Palm Avenue, Vesu, Surat, Gujarat 395007</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        const project_size = {{ project_size }}
+        const total_cost = {{ total_cost }}
+        const generation_calculation = [
+            { month: "Jan", output: (project_size * 31 * 3.98).toFixed(2) },
+            { month: "Fab", output: (project_size * 28 * 4.37).toFixed(2) },
+            { month: "Mar", output: (project_size * 31 * 4.95).toFixed(2) },
+            { month: "Apr", output: (project_size * 30 * 4.86).toFixed(2) },
+            { month: "May", output: (project_size * 31 * 4.8).toFixed(2) },
+            { month: "Jun", output: (project_size * 30 * 3.95).toFixed(2) },
+            { month: "Jul", output: (project_size * 31 * 3.09).toFixed(2) },
+            { month: "Aug", output: (project_size * 31 * 2.95).toFixed(2) },
+            { month: "Sep", output: (project_size * 30 * 3.7).toFixed(2) },
+            { month: "Oct", output: (project_size * 31 * 4.12).toFixed(2) },
+            { month: "Nov", output: (project_size * 30 * 3.97).toFixed(2) },
+            { month: "Dec", output: (project_size * 31 * 3.69).toFixed(2) },
+        ]
+        const ctx = document.getElementById('myChart');
+        const cashFlow = Array.from({ length: 25 }).map((_, i) => i).reduce((acc, item) => {
+            const preAccVal = acc[item - 1]
+            if (item === 0) {
+                const solar_unit_production = (project_size * 4 * 365).toFixed(2);
+                const net_solar_saving = (solar_unit_production * 7.4).toFixed(2);
+                const cash_flow = (net_solar_saving - total_cost).toFixed(2);
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            } else if (item === 1) {
+                const solar_unit_production = (Number(preAccVal.solar_unit_production) - (Number(preAccVal.solar_unit_production) * 0.025)).toFixed(2);
+                const net_solar_saving = (Number(solar_unit_production) * (Number(preAccVal.net_solar_saving) / Number(preAccVal.solar_unit_production))).toFixed(2);
+                const cash_flow = (Number(net_solar_saving) + Number(preAccVal.cash_flow)).toFixed(2);
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            } else {
+                const solar_unit_production = (Number(preAccVal.solar_unit_production) - (Number(acc[1].solar_unit_production) * 0.007)).toFixed(2);
+                const net_solar_saving = (Number(solar_unit_production) * (Number(preAccVal.net_solar_saving) / Number(preAccVal.solar_unit_production))).toFixed(2)
+                const cash_flow = (Number(net_solar_saving) + Number(preAccVal.cash_flow)).toFixed(2)
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            }
+            return acc
+        }, []).map(item => item.cash_flow)
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Array.from({ length: 25 }).map((_, i) => i).map((item, index) => (new Date().getFullYear() + index)),
+                datasets: [{
+                    label: 'Saving',
+                    data: cashFlow,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                devicePixelRatio: 2,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const predictedEnergyCTX = document.getElementById('predictedEnergyOutput');
+
+        new Chart(predictedEnergyCTX, {
+            type: 'bar',
+            data: {
+                labels: generation_calculation?.map((calc) => calc.month),
+                datasets: [{
+                    label: 'Output (KW)',
+                    data: generation_calculation?.map((calc) => Number(calc.output)),
+                    borderWidth: 1,
+                }]
+            },
+            options: {
+                devicePixelRatio: 2,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

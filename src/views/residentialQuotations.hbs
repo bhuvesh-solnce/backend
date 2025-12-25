@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{!--
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "DM Sans", serif;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        .page {
+            height: calc(100vh);
+            padding: 2rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid #0B65BC;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+
+        th {
+            background-color: #0B65BC;
+            color: white;
+            font-weight: normal;
+            min-height: 52px;
+            height: 52px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        tr {
+            min-height: 52px;
+            height: 52px;
+        }
+
+        #quotation tr>td:nth-child(2) {
+            text-align: left;
+        }
+
+        tr>td:nth-child(n/2) {
+            background-color: lightgray;
+        }
+
+        .logo {
+            width: 39vw;
+            margin-top: -7.45rem;
+            margin-bottom: -7.45rem;
+        }
+
+        .logo-text {
+            font-weight: 500;
+            color: #0B65BC;
+            font-size: 14px;
+            letter-spacing: 0.0px;
+            margin-bottom: 0.75rem;
+        }
+
+        .logo-big {
+            width: 55vw;
+            margin-top: -8.6rem;
+            margin-bottom: -11rem;
+        }
+
+        .logo-text-big {
+            font-weight: 600;
+            color: #0B65BC;
+            font-size: 21.6px;
+        }
+
+        .details {
+            font-weight: 400;
+            font-size: 15.5px;
+            line-height: 1.35;
+        }
+
+        .name,
+        .date {
+            font-weight: 600;
+            font-size: 15.5px;
+        }
+
+        .title-box {
+            background-color: #0B65BC;
+            color: white;
+            font-size: 13.5px;
+            font-weight: 500;
+            width: fit-content;
+            padding: 0.3rem 1rem 0.3rem 3rem;
+            margin-left: -3rem;
+            margin-bottom: 0.5rem;
+            margin-top: -1.0rem;
+        }
+
+        .notes {
+            font-size: 15.5px;
+            font-weight: 400;
+        }
+
+        ul li::marker {
+            color: #0B65BC;
+        }
+
+        .fill-icon {
+            height: 28px;
+            width: 28px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%
+        }
+
+        .icon-image {
+            width: 14px;
+            height: 14px;
+        }
+
+        .footer-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .p2 tr>td {
+            font-weight: 500;
+            font-size: 13.5px;
+        }
+
+        .heading {
+            font-weight: 600;
+            color: #0B65BC;
+            font-size: 42px;
+            text-align: center;
+            margin: 2.5rem 8rem 0rem 8rem;
+            line-height: 1;
+            letter-spacing: 0.5px;
+        }
+
+        .divider {
+            height: 2px;
+            width: 120px;
+            background-color: #0B65BC;
+            color: #0B65BC;
+            align-self: center;
+        }
+
+        .store {
+            width: 110px;
+            margin: -0.8rem -0.4rem;
+        }
+
+        .app-image {
+            height: 51.5vh;
+            width: 100vw;
+            margin-left: -1rem;
+            margin-top: 3rem;
+        }
+
+        #quotation {
+            margin-top: -1.5rem;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B65BC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    {{!-- Page 1 --}}
+    <div class="page flex flex-col gap-[1rem]">
+        <div class="flex flex-col justify-center items-center">
+            <img class="logo" src="{{backend_url}}/solnce.svg" />
+            <div class="logo-text">SOLNCE ENERGY PVT LTD</div>
+        </div>
+        <div class="flex justify-between">
+            <div class="details">
+                <p class="name">To : {{name}}</p>
+                <p>{{address_1}}, {{address_2}}</p>
+                <p>{{city}}, {{state}}, {{country}}, {{add_zip_code}}</p>
+            </div>
+            <div class="details">
+                <p class="date">Date : {{todaysDate}}</p>
+                <p>Quotation No: {{quotation_number}}</p>
+            </div>
+        </div>
+        <div id="quotation">
+            <table class="text-center text-sm">
+                <thead>
+                    <tr>
+                        <th class="w-[80px]">Sr. No</th>
+                        <th>Description</th>
+                        <th class="w-[100px]">Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Solar power generating system of {{system_size_wp}} wp: Design, Supply, Installation and
+                            Commissioning</td>
+                        <td>{{panel_cost}}</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>GST on your solar power generating system (8.9%)</td>
+                        <td>{{gst_amount}}</td>
+                    </tr>
+                    {{!-- <tr>
+                        <td>2</td>
+                        <td>
+                            <p>Fabrication Hot Dip GI 80*40 and 40*40(2mm thickness) elevated structure</p>
+                            <p>ELCB, Stamp and DISCOM Charges</p>
+                        </td>
+                        <td>Included</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Meter Charges ( as actual)</td>
+                        <td>{{meter_charge}}</td>
+                    </tr> --}}
+                    <tr class="name">
+                        <td>2</td>
+                        <td>Grand Total Paid to us (inclusive of GST)</td>
+                        <td>{{project_cost}}</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Subsidy</td>
+                        <td>-{{subsidy_amount}}</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Effective Price after subsidy</td>
+                        <td>{{effective_price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        {{#if (and remarks (trim (default remarks "")))}}
+        <div class="notes">
+            <p class="title-box">Remarks :</p>
+            {{{remarks}}}
+        </div>
+        {{/if}}
+        <div class="notes">
+            <p class="title-box">Notes :</p>
+            {{{notes}}}
+        </div>
+        <div class="notes">
+            <p class="title-box">Payment Terms :</p>
+            <p><span style="color: #0B65BC;">10% </span>of the Total Project Cost in advance.</p>
+            <p><span style="color: #0B65BC;">90% </span>of the Total Project Cost before dispatch of materials.</p>
+            <p>Note: The net meter file will be submitted only after completing <span
+                    style="color: #0B65BC;">100%</span> Payment.</p>
+            <p class="flex">
+                <span style="color: #0B65BC;">Account Holder :&nbsp;</span>
+                <span>Solnce Energy Private Limited</span>
+            </p>
+            <p class="flex">
+                <span style="color: #0B65BC;">Bank Name :&nbsp;</span>
+                <span>ICICI Bank</span>
+            </p>
+            <p class="flex">
+                <span style="color: #0B65BC;">Branch :&nbsp;</span>
+                <span>Hazira branch</span>
+            </p>
+            <p class="flex">
+                <span style="color: #0B65BC;">Account Number :&nbsp;</span>
+                <span>777705003692</span>
+            </p>
+            <p class="flex">
+                <span style="color: #0B65BC;">IFSC :&nbsp;</span>
+                <span>ICIC0000391</span>
+            </p>
+        </div>
+    </div>
+    {{!-- Page 2 --}}
+    <div class="page text-sm relative">
+        <div class="flex flex-col gap-[1rem]">
+            <div class="flex flex-col gap-[1rem]">
+                <p class="text-xl font-semibold">Bill Material</p>
+                <table class="text-center text-xs p2">
+                    <thead>
+                        <tr>
+                            <th class="w-[80px]">Sr. No</th>
+                            <th class="w-[100px]">Item</th>
+                            <th style="min-width: calc(100% - 280px);">Specifications/Capacity</th>
+                            <th class="max-w-[100px]">Make</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Solar PV Module</td>
+                            <td>{{watt_peak}} WP {{panel_type}}</td>
+                            <td>{{company_name}}</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Solar On Grid Inverter</td>
+                            <td>IP65 protection</td>
+                            <td>Solaryan/KSolare/Growatt/Evvo</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Module Mounting Structure</td>
+                            <td>As Required</td>
+                            <td>Indo Star</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>DC Distribution Box</td>
+                            <td>As Required</td>
+                            <td>Schneider / L&T/ ELMEX</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>AC Distribution Box</td>
+                            <td>As Required</td>
+                            <td>Schneider / L&T/ ELMEX</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>DC Cable</td>
+                            <td>Copper Cable</td>
+                            <td>Polycab</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>AC Cable</td>
+                            <td>Alu Armoured/ Copper Flexible</td>
+                            <td>Polycab</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Earthing system</td>
+                            <td>1.5 mtr x 14mm GI Earthing with 15kg BFC.</td>
+                            <td>As per IS Standard</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Earthing strip / Wire</td>
+                            <td>As Required</td>
+                            <td>Kanbery</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Lightening Arrestor</td>
+                            <td>1 mtr x 14mm Copper Coted</td>
+                            <td>As per IS Standard</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Remote Monitoring System</td>
+                            <td>As per Inverter</td>
+                            <td>As per Inverter</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Miscellaneous Items</td>
+                            <td>Lugs, MC4Connector, Cable- Tie,Cable-Tray, Insulation Tape,HDPE PIPE, Flexible- Pipe
+                                Etc.</td>
+                            <td>As per IS Standard</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>MC4 Connector</td>
+                            <td>-</td>
+                            <td>As per IS Standard</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="flex justify-between items-center">
+                <div>
+                    <p style="font-size: 15px;">Thank you for your business!</p>
+                    <p class="text-xl" style="color: #0B65BC; font-weight: 600;">Solnce Energy Private Limited</p>
+                    <p style="font-size: 22px; margin-top:5px;">GST : 24ABGCS3520F1C0</p>
+                </div>
+                <img class="w-[120px] object-cover" src="{{backend_url}}/solnce-stamp.svg" />
+            </div>
+        </div>
+        {{!-- <div
+            class="text-xs flex justify-between bg-primary text-white absolute left-0 bottom-0 w-full px-[3.5rem] py-[1rem]">
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/mail-fill.svg" /></div>
+                <p class="footer-text"><a href="mailto:support@solnceenergy.com">support@solnceenergy.com</a></p>
+            </div>
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/phone.svg" /></div>
+                <p class="footer-text"><a href="tel:7041166814">+91-70411 66814</a></p>
+            </div>
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/web.svg" /></div>
+                <p class="footer-text"><a href="www.solnceenergy.com">www.solnceenergy.com</a>7</p>
+            </div>
+        </div>
+        <div
+            class="text-xs flex justify-between bg-primary text-white absolute left-0 bottom-0 w-full px-[3.5rem] py-[1rem]">
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/pin.svg" /></div>
+                <p class="footer-text">604-605, Avadh Kontina, Vip Road, Near CB Patel Club, Surat, Gujarat 395007</p>
+            </div>
+        </div> --}}
+        <div
+            class="text-xs flex flex-col gap-2 bg-primary text-white absolute left-0 bottom-0 w-full px-[3.5rem] py-[1rem]">
+
+            <div class="flex justify-between">
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/mail-fill.svg" /></div>
+                    <p class="footer-text"><a href="mailto:support@solnceenergy.com">support@solnceenergy.com</a></p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/phone.svg" /></div>
+                    <p class="footer-text"><a href="tel:7041166814">+91-70411 66814</a></p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/web.svg" /></div>
+                    <p class="footer-text"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/pin.svg" /></div>
+                <p class="footer-text">604-605, Avadh Kontina, Vip Road, Near CB Patel Club, Surat, Gujarat 395007</p>
+            </div>
+
+        </div>
+    </div>
+    {{!-- Page 3 --}}
+    <div class="page flex flex-col gap-[1rem]" style="padding-bottom: 0; justify-content: baseline;">
+        <div class="flex flex-col justify-center items-center">
+            <img class="logo-big" src="{{backend_url}}/solnce.svg" />
+            <div class="logo-text-big">SOLNCE ENERGY PVT LTD</div>
+        </div>
+        <div class="flex flex-col">
+            <div class="heading">Experience convenience
+                at your fingertips.</div>
+        </div>
+        <div class="flex flex-col divider"></div>
+        <div class="flex flex-col">
+            <p style="text-align: center; font-size: 21px;">Get started today and unlock exclusive features.</p>
+        </div>
+        <div class="flex flex-col">
+            <p style="text-align: center; font-size: 15px;">Download the app now</p>
+        </div>
+        <div class="flex flex-row justify-center items-center gap-4">
+            <img class="store" src="{{backend_url}}/app-store.png" />
+            <img class="store" src="{{backend_url}}/gp-store.png" />
+        </div>
+        <div class="app-image flex flex-row">
+            <img src="{{backend_url}}/phone.png" />
+        </div>
+    </div>
+</body>
+
+</html>

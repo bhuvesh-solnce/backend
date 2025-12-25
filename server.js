@@ -1,27 +1,21 @@
 require('dotenv').config();
 const app = require('./src/app');
-const sequelize = require('./src/config/database');
-const { initCasbin } = require('./src/config/casbin');
+const { loadModels } = require('./src/models');
+//const listEndpoints = require('express-list-endpoints');
 
-const DB_PORT = process.env.DB_PORT;
+const PORT = process.env.PORT || process.env.SERVER_PORT || 4000;
 
 async function startServer() {
   try {
-    // Connect to database
-    await sequelize.authenticate();
-    console.log('✅ Database connected successfully.');
-    
-    // Initialize Casbin
-    await initCasbin();
-    
-    // Start server
-    app.listen(DB_PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${DB_PORT}`);
+    await loadModels();
+    app.listen(PORT, () => {
+      console.log(`Server running on PORT: ${PORT}`);
     });
   } catch (error) {
-    console.error('❌ Unable to start server:', error);
+    console.error('Server startup error:', error.message);
     process.exit(1);
   }
 }
 
 startServer();
+

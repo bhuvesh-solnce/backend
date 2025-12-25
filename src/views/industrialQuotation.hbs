@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Document</title>
+    <style>
+        :root {
+            --primary-color: #0067CA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "DM Sans", serif;
+        }
+
+        @page {
+            margin: 0;
+            size: auto 100%;
+        }
+
+        @media print {
+            .page-break {
+                page-break-before: always;
+            }
+
+            .btn {
+                background-color: var(--primary-color);
+            }
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+            display: inline-block;
+        }
+
+        .txt-center {
+            text-align: center;
+        }
+
+        .page-one {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+        }
+
+        .DMsans-300 {
+            font-family: "DM Sans", serif;
+            font-weight: 300;
+        }
+
+        .DMsans-400 {
+            font-family: "DM Sans", serif;
+            font-weight: 400;
+        }
+
+        .DMsans-500 {
+            font-family: "DM Sans", serif;
+            font-weight: 500;
+        }
+
+        .DMsans-600 {
+            font-family: "DM Sans", serif;
+            font-weight: 600;
+        }
+
+        .DMsans-700 {
+            font-family: "DM Sans", serif;
+            font-weight: 700;
+        }
+
+        .DMsans-800 {
+            font-family: "DM Sans", serif;
+            font-weight: 800;
+        }
+
+        .poppins-400 {
+            font-family: "Poppins", serif;
+            font-weight: 400;
+        }
+
+        .poppins-600 {
+            font-family: "Poppins", serif;
+            font-weight: 600;
+        }
+
+        .theme-color {
+            color: var(--primary-color);
+        }
+
+        .page-one-before {
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -5;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+
+        .social-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 13px;
+            gap: 6px;
+            padding-top: 42px;
+            padding-bottom: 50px;
+        }
+
+        .social-icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+        }
+
+        .social-icon-wrapper a {
+            width: 24px;
+            height: 24px;
+        }
+
+        .pdf-logo {
+            margin: auto;
+            width: 44vw;
+            margin-top: 1rem;
+            z-index: -1;
+        }
+
+        .banner-title {
+            font-size: 40px;
+            text-align: center;
+            margin-top: 36px;
+            letter-spacing: 2px;
+        }
+
+        .one-stop {
+            font-size: 44px;
+            color: var(--primary-color);
+        }
+
+        .download-txt {
+            text-align: center;
+            font-size: 25px;
+            margin-top: 40px;
+            margin-bottom: 6px;
+        }
+
+        .download-wrappper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .download-wrappper a {
+            width: 175px;
+        }
+
+        .page-one-bottom {
+            width: 100%;
+            align-items: center;
+            bottom: 0;
+            margin-top: 45px;
+        }
+
+        .page-one-bottom img {
+            width: 100%;
+            height: auto;
+            max-height: 45vh;
+            display: block;
+            object-fit: fill;
+            vertical-align: bottom;
+        }
+
+        .copy-right {
+            position: absolute;
+            bottom: 2rem;
+            color: white;
+            width: 100%;
+        }
+
+        /* page two */
+
+        .page-two {
+            position: relative;
+        }
+
+        .page-two-top {
+            padding: 30px;
+        }
+
+        .site-logo {
+            width: 160px;
+        }
+
+        .banner-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .banner-top .social-wrapper {
+            padding: 0;
+        }
+
+        .fs-28 {
+            font-size: 28px;
+            line-height: 1.5;
+        }
+
+        .fs-27 {
+            font-size: 27px;
+            line-height: 1.5;
+        }
+
+        .fs-26 {
+            font-size: 26px;
+            line-height: 1.5;
+        }
+
+        .fs-25 {
+            font-size: 25px;
+            line-height: 1.5;
+        }
+
+        .fs-24 {
+            font-size: 24px;
+            line-height: 1.5;
+        }
+
+        .fs-23 {
+            font-size: 23px;
+            line-height: 1.5;
+        }
+
+        .fs-22 {
+            font-size: 22px;
+            line-height: 1.5;
+        }
+
+        .fs-21 {
+            font-size: 21px;
+            line-height: 1.5;
+        }
+
+        .fs-20 {
+            font-size: 20px;
+            line-height: 1.5;
+        }
+
+        .fs-19 {
+            font-size: 19px;
+            line-height: 1.5;
+        }
+
+        .fs-18 {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .fs-16 {
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .fs-15 {
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .page-two-list {
+            list-style: none;
+        }
+
+        .page-two-list li {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .page-two-list li::before {
+            content: '';
+            background-image: url(./images/arrow.svg);
+            width: 16px;
+            height: 8px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+        }
+
+        .footer {
+            font-size: 16px;
+            line-height: 1;
+            text-align: center;
+            position: absolute;
+            top: 1095px;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .footer a {
+            background-color: white;
+            padding: 0 24px;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            transform: translateY(-50%);
+            left: 0;
+            border: 0.5px solid var(--primary-color);
+            z-index: -1;
+        }
+
+        /* page three */
+
+        .page-three {
+            position: relative;
+        }
+
+        .page-three-top {
+            padding: 30px;
+        }
+
+        .page-three-desc p {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 6px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 10px;
+            display: inline-block;
+            text-align: center;
+            margin: auto;
+        }
+
+        .bank-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            width: 660px;
+            margin: 0 auto;
+        }
+
+        .bank-grid-col img {
+            object-fit: contain;
+        }
+
+        .bank-grid-col {
+            width: 25%;
+            padding: 16px;
+            height: 64px;
+            border: none;
+            border-right: 0.5px solid #EBECEC;
+            border-bottom: 0.5px solid #EBECEC;
+        }
+
+        .bank-grid-col:nth-child(4n) {
+            border-right: none;
+        }
+
+        .solar-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .solar-grid-col {
+            width: 16.66%;
+            padding: 12px;
+            height: 80px;
+            border: none;
+            border-right: 0.5px solid #EBECEC;
+            border-bottom: 0.5px solid #EBECEC;
+        }
+
+        .solar-grid-col:nth-child(6n) {
+            border-right: none;
+        }
+
+        .solar-grid-col:nth-last-child(-n+6) {
+            border-bottom: none;
+        }
+
+        .solar-grid-col img {
+            object-fit: contain;
+            max-width: 100%;
+            height: 100%;
+        }
+
+        /* page four */
+
+        .page-four {
+            position: relative;
+        }
+
+        .page-four-top {
+            padding: 30px;
+        }
+
+        .page-four-logo {
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 1.3rem;
+            margin-bottom: -1rem;
+            max-width: 180px;
+        }
+
+        .page-four-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .page-four-table th,
+        .page-four-table td {
+            border: 1px solid var(--primary-color);
+            font-size: 15px;
+            font-family: "DM Sans", serif;
+            font-weight: 600;
+            padding: 0 16px;
+        }
+
+        .page-four-table th {
+            font-size: 16px;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+            height: 48px;
+        }
+
+        .page-four-table tr {
+            height: 64px;
+            background-color: #F5F5F5;
+        }
+
+        .page-four-table tr:nth-child(even) {
+            background-color: white;
+        }
+
+        .page-four-table tr td:last-child {
+            width: 165px;
+        }
+
+        .page-five-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .page-five-table th,
+        .page-five-table td {
+            border: 1px solid var(--primary-color);
+            font-size: 15px;
+            font-family: "DM Sans", serif;
+            font-weight: 600;
+            padding: 0 16px;
+        }
+
+        .page-five-table th {
+            font-size: 16px;
+            font-weight: 600;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: left;
+            height: 48px;
+        }
+
+        .page-five-table tr {
+            height: 48px;
+            background-color: #F5F5F5;
+        }
+
+        .page-five-table tr:nth-child(even) {
+            background-color: white;
+        }
+
+        .page-five-table tr td:last-child {
+            width: 165px;
+        }
+
+        .view-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .view-card {
+            width: 100%;
+            height: 250px;
+            background-color: var(--primary-color);
+            border-radius: 16px;
+            margin-bottom: 6px;
+        }
+
+        /* page five */
+
+        .page-five {
+            position: relative;
+        }
+
+        .page-five-padding {
+            padding: 30px;
+        }
+
+        .note {
+            padding: 4px 20px 4px 30px;
+            background-color: var(--primary-color);
+            display: inline-block;
+            color: white;
+            font-family: 16px;
+        }
+
+        .note-list li {
+            color: black;
+            list-style: none;
+            padding-left: 20px;
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .note-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: var(--primary-color);
+            position: absolute;
+            top: 8px;
+            left: 0;
+        }
+
+        /* page six */
+
+        .page-six {
+            position: relative;
+        }
+
+        .page-six-padding {
+            padding: 30px;
+        }
+
+        .scope {
+            font-size: 32px;
+            line-height: 1.5;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        /* page seven */
+
+        .page-seven {
+            position: relative;
+        }
+
+        .page-seven-padding {
+            padding: 30px;
+        }
+
+        .saving-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .saving-card-box {
+            padding: 16px;
+            border-radius: 10px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .sav-border {
+            width: 60px;
+            border: 1px solid #FFED00;
+            margin: 10px auto;
+        }
+
+        /* page eight */
+
+        .page-eight {
+            position: relative;
+        }
+
+        .page-eight-padding {
+            padding: 30px;
+        }
+
+        .weather-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 12px;
+        }
+
+        .weather-grid-col {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .predict-list li::before {
+            top: 10px;
+        }
+
+        /* page nine */
+        .page-nine {
+            position: relative;
+        }
+
+        .page-nine-padding {
+            padding: 30px;
+        }
+
+        .scope-card {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .scope-card-img {
+            width: 100%;
+            max-width: 340px;
+            height: 200px;
+            border-radius: 24px;
+            overflow: hidden;
+        }
+
+        .scope-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* page eleven */
+
+        .page-eleven {
+            position: relative;
+        }
+
+        .page-ele-padding {
+            padding: 30px;
+        }
+
+        /* page thirteen */
+
+        .page-thirteen {
+            position: relative;
+            min-height: 100vh;
+            z-index: 1;
+        }
+
+        .page-13-before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 7rem);
+            z-index: -1;
+        }
+
+        .page-13-logo {
+            max-width: 256px;
+            margin: auto;
+            padding-top: 72px;
+            margin-bottom: 3.5rem;
+        }
+
+        .thank-txt {
+            font-size: 74px;
+            color: white;
+            letter-spacing: -0.08px;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .app-txt {
+            color: white;
+        }
+
+        .app-white {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .app-white img {
+            width: 16vw;
+        }
+
+        .page-13-footer {
+            bottom: 0;
+            position: absolute;
+            width: 100%;
+            padding: 30px 50px;
+            z-index: -1;
+            background-color: var(--primary-color);
+        }
+
+        .social-white-txt img {
+            display: block;
+        }
+
+        .social-white-txt {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .social-white-txt a {
+            color: white;
+        }
+
+        .social-white {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .fill-icon {
+            height: 28px;
+            width: 28px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%
+        }
+
+        .icon-image {
+            width: 14px;
+            height: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page-one">
+        <div class="page-one-before">
+            <img src="{{backend_url}}/page-one.png" alt="">
+        </div>
+        <div class="DMsans-600 social-wrapper">
+            <p>Follow us on </p>
+            <div class="social-icon-wrapper">
+                <a href=""><img src="{{backend_url}}/facebook.svg" alt=""></a>
+                <a href=""><img src="{{backend_url}}/instagram.svg" alt=""></a>
+                <a href=""><img src="{{backend_url}}/twiter.svg" alt=""></a>
+                <a href=""><img src="{{backend_url}}/linkedin.svg" alt=""></a>
+            </div>
+        </div>
+        <div class="pdf-logo">
+            <img src="{{backend_url}}/solnce-blue.svg">
+        </div>
+        <div class="DMsans-400 banner-title">
+            <p>We are accelerating the <br> adoption of solar through a</p>
+            <div class="page-one-border"></div>
+            <p class="poppins-600 one-stop">One Stop Solar App</p>
+        </div>
+        <div>
+            <p class="DMsans-400 download-txt">Download the app now</p>
+            <div class="download-wrappper">
+                <a href=""><img src="{{backend_url}}/app-store.png" alt=""></a>
+                <a href=""><img src="{{backend_url}}/gp-store.png" alt=""></a>
+            </div>
+        </div>
+        <div class="page-one-bottom">
+            <img src="{{backend_url}}/page-one-bottom.png" alt="">
+            <p class="copy-right DMsans-600 fs-16 txt-center">Copyright © 2024 by Solnce Energy Pvt Ltd. All Rights
+                Reserved</p>
+        </div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-two">
+        <div class="page-two-top">
+            <div class="banner-top">
+                <div class="site-logo"><img src="{{backend_url}}/solnce-blue.svg" alt=""></div>
+                <div class="DMsans-600 social-wrapper">
+                    <p>Follow us on </p>
+                    <div class="social-icon-wrapper">
+                        <a href=""><img src="{{backend_url}}/facebook.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/instagram.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/twiter.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/linkedin.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div>
+                <p class="DMsans-400 fs-18">Date : {{quotation_date}}</p>
+                <p class="DMsans-400 fs-18">Project ID : {{project_id}}</p>
+                <br><br>
+                <p class="DMsans-700 fs-18">To, {{company_name}}</p>
+                <br>
+                <p class="DMsans-400 fs-18">Subject : Proposal for <span class="DMsans-600 theme-color">{{project_size}}
+                        kW</span>
+                    for Rooftop Solar Power Plant with <span class="DMsans-600 theme-color">{{watt_peak_module}}</span>
+                    PV
+                    Modules</p>
+                <br>
+                <div class="DMsans-500 fs-18">
+                    <p>Respected sir,</p>
+                    <br>
+                    <p>We thank you for your valued inquiry on the solnce app.</p>
+                    <br>
+                    <p>Solnce is india’s first one-stop solar platform with a portfolio of till date. Our vision is to
+                        make solar accessible and affordable for all we aim to provide our customers with hassle-free
+                        and seamless transition to solar energy. we promise to deliver premium quality at the best rate.
+                    </p>
+                    <ul class="page-two-list">
+                        <li>Company Proﬁle</li>
+                        <li>Prelimanry Bill of Materials</li>
+                        <li>Financials</li>
+                        <li>Estimated</li>
+                        <li>Predicted Energy Output</li>
+                        <li>Scope of Work</li>
+                        <li>Terms of Conditions</li>
+                    </ul>
+                    <br>
+                    <p>We trust you will ﬁnd our offer in line with your requirements and hope to receive your positive
+                        response. Should you require any further clariﬁcations/conﬁrmations please feel free to revert.
+                    </p>
+                    <br>
+                    <p>Thanking you</p>
+                    <p class="DMsans-600 theme-color">Solnce Energy Pvt Limited</p>
+                </div>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-three">
+        <div class="page-three-top">
+            <div class="banner-top">
+                <div class="site-logo"><img src="{{backend_url}}/solnce-blue.svg" alt=""></div>
+                <div class="DMsans-600 social-wrapper">
+                    <p>Follow us on </p>
+                    <div class="social-icon-wrapper">
+                        <a href=""><img src="{{backend_url}}/facebook.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/instagram.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/twiter.svg" alt=""></a>
+                        <a href=""><img src="{{backend_url}}/linkedin.svg" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <p class="DMsans-700 fs-22 theme-color">Company Profile</p>
+            <div class="DMsans-400 fs-18 page-three-desc" style="line-height: 1.25;">
+                <p>Solnce is India's pioneering all-in-one Solar Application, offering a comprehensive range of services
+                    to address all solar energy needs. Our services include assistance with government procedures, solar
+                    financing, seamless installation, post-installation cleaning and maintenance, ensuring a hassle-free
+                    solar energy transition.</p>
+                <p>Established in 2021 and headquartered in Surat, Solnce is available on both Android and iOS
+                    platforms, providing end-to-end project management support. The app enables users to track the
+                    status of their projects in real time.</p>
+                <p>With over three years of proven experience, Solnce has successfully completed more than 1,000
+                    projects, including solar installations, cleaning and maintenance, and has garnered the trust of
+                    over 1000 satisfied customers. Our portfolio spans over 30 MW, reflecting our expertise and
+                    commitment to excellence.</p>
+                <p>Our vision is to make solar energy affordable and accessible to all. We strive to deliver the highest
+                    quality solutions at competitive rates, ensuring a seamless, digitized, and customer-centric solar
+                    energy experience. Solnce is your trusted partner in harnessing solar energy for life</p>
+            </div><br>
+            <div class="txt-center">
+                <p class="btn DMsans-700" style="font-size: 20px;">Bank Partner</p>
+                <br><br>
+                <div class="bank-grid">
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-1.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-2.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-3.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-4.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-5.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-6.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-7.svg" alt=""></div>
+                    <div class="bank-grid-col"><img src="{{backend_url}}/bank-8.svg" alt=""></div>
+                </div>
+                <div style="padding: 16px 30%; height: 64px; margin: auto;">
+                    <img src="{{backend_url}}/bank-9.svg" alt="">
+                </div>
+            </div><br>
+            <div class="txt-center">
+                <p class="btn DMsans-700" style="font-size: 20px;">Solar Panel Brands</p>
+                <br><br>
+                <div class="solar-grid">
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-1.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-2.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-3.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-4.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-5.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-6.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-7.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-8.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-9.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-10.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-11.svg" alt=""></div>
+                    <div class="solar-grid-col"><img src="{{backend_url}}/panel-12.svg" alt=""></div>
+                </div>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-four">
+        <div class="page-four-top">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br>
+            <p class="DMsans-700 fs-20 theme-color" style="margin: 8px 0;">Preliminary Bill of materials</p>
+            <table class="page-four-table">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Speciﬁcation</th>
+                        <th>Make</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PV Module</td>
+                        <td>{{pv_module}}</td>
+                        <td>{{pv_module_make}}</td>
+                    </tr>
+                    <tr>
+                        <td>Inverter</td>
+                        <td>AC On-Grid Inverter Output : 415, VAC, 3-Phase</td>
+                        <td>{{inverter_make}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mounting Structure</td>
+                        <td>{{mounting_structure_specification}}</td>
+                        <td>Reputed Make</td>
+                    </tr>
+                    <tr>
+                        <td>ACDB/DCDB Combiner Box</td>
+                        <td>As Per Electrical Standard </td>
+                        <td>Reputed Make</td>
+                    </tr>
+                    <tr>
+                        <td>AC Cables</td>
+                        <td>As Per Electrical Standard</td>
+                        <td>Polycab/RR</td>
+                    </tr>
+                    <tr>
+                        <td>DC Cables</td>
+                        <td>As Per Electrical Standard</td>
+                        <td>Polycab/RR</td>
+                    </tr>
+                    <tr>
+                        <td>Earthing system</td>
+                        <td>1.5 m x 14mm GI Cupper Coated Earthing with 15kg BFC.</td>
+                        <td>As Per Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Electric Piping and Accessories</td>
+                        <td>As Required</td>
+                        <td>As Per Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Lightening Arrestor</td>
+                        <td>1 mtr x 14mm Copper Coted</td>
+                        <td>As Per Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Remote Monitoring</td>
+                        <td>As Per Inverter</td>
+                        <td>As Per Standard</td>
+                    </tr>
+                    <tr>
+                        <td>Miscellaneous Items</td>
+                        <td>Lugs, MC4Connector, Cable-Tie, Cable-Tray, Insulation Tape, HDPE PIPE, Flexible- Pipe Etc.
+                        </td>
+                        <td>As Per Standard</td>
+                    </tr>
+                </tbody>
+            </table>
+            {{!-- <br>
+            <p class="DMsans-700 fs-23 theme-color">3D View of Your Solar</p><br>
+            <div class="view-grid">
+                <div>
+                    <div class="view-card"></div>
+                    <p class="DMsans-400 fs-15 txt-center">Top View</p>
+                </div>
+                <div>
+                    <div class="view-card"></div>
+                    <p class="DMsans-400 fs-15 txt-center">Front View</p>
+                </div>
+                <div>
+                    <div class="view-card"></div>
+                    <p class="DMsans-400 fs-15 txt-center">Diagonal View</p>
+                </div>
+            </div> --}}
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-five">
+        <div class="page-five-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br>
+            <p class="DMsans-700 fs-23 theme-color">Financial</p>
+            <table class="page-five-table" style="margin-bottom: 8px;">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {{!-- <td>Capacity of {{project_size}} kW Rooftop Solar plant</td> --}}
+                        <td>{{pv_module_desc}}</td>
+                        <td>{{cost_without_GST}}</td>
+                    </tr>
+                    <tr>
+                        <td>GST (8.9%)</td>
+                        <td>{{cost_of_GST}}</td>
+                    </tr>
+                    <tr>
+                        <td>Project Cost (inclusive of GST)</td>
+                        <td>{{total_cost}}</td>
+                    </tr>
+                    <tr>
+                        <td>Round off</td>
+                        <td>{{round_amount}}</td>
+                    </tr>
+                    {{!-- <tr>
+                        <td>Cleaning & Maintenance System</td>
+                        <td>{{showIncluded is_cleaning_charge_included}}</td>
+                    </tr>
+                    <tr>
+                        <td>GEDA charges</td>
+                        <td>{{ showIncluded is_GEDA_charge_included }}</td>
+                    </tr>
+                    <tr>
+                        <td>Meter Charges</td>
+                        <td>{{showIncluded is_meter_charge_included}}</td>
+                    </tr> --}}
+                    <tr>
+                        <td>Payable Amount (inclusive of GST)</td>
+                        <td>{{payable_amount}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p class="note DMsans-600">Remarks :</p>
+        <div class="page-five-padding" style="padding-top: 10px; margin-right: 40px;">
+            {{{remarks}}}
+            {{!-- <ul class="DMsans-500 fs-16 note-list">
+                <li style="margin-bottom: 8px;">The Liasoning Charges if any will be as per the rules
+                    and regulations
+                    of the Energy Development
+                    Authority. These charges will always be extra as actual.</li>
+                <li style="margin-bottom: 8px;">The GEDA charges will vary with your Tariff Code and will be as per the
+                    rules and regulations of the
+                    Energy Development Authority for your respective state and Electricity Provider.</li>
+                <li style="margin-bottom: 8px;">The Meter Charges, Connectivity Charges and Strengthening Charges (if
+                    any) will be as per the rules
+                    and regulations of the Electricity Distribution Company. These charges will always be extra as
+                    actual.</li>
+                <li style="">For fully automatic cleaning system motor ( 15000 approximately) and
+                    timer ( 2500 approximately)
+                    cost will be extra per system.</li>
+            </ul> --}}
+        </div>
+        <p class="note DMsans-600">Payment Terms :</p>
+        <div class="page-five-padding" style="padding-top: 8px;">
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">10%</span> of the Total Project Cost as
+                Advance Payment.</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">40%</span> of the Total Project Cost before
+                the delivery of structure materials, Inverter and BOS.</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">40%</span> of the Total Project Cost before
+                the delivery of the Solar Modules.</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">10%</span> of the Total Project Cost after
+                the commissioning of the project by CEI.</p>
+            <div style="margin-top: 8px; margin-bottom: 8px">
+                <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">Note:</span> The net meter file will be
+                    submitted only after completing 100% Payment.</p>
+            </div>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">Account Holder :</span> Solnce Energy
+                Private Limited</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">Bank Name :</span> ICICI Bank</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">Branch :</span> Hazira Branch</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">Account Number :</span> 777705003692</p>
+            <p class="fs-15 DMsans-500"><span class="DMsans-600 theme-color">IFSC :</span> ICIC0000391</p>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-six">
+        <div class="page-six-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br>
+            <p class="scope DMsans-700">Scope of work</p><br>
+            <p class="DMsans-700 fs-17 theme-color">Project Terms :</p>
+            <ul class="DMsans-500 fs-17 note-list" style="font-size: 14px; line-height: 1.5;">
+                <li>The Prices are inclusive of all Taxes.</li>
+                <li>Load extension or any other expenses from the Distribution Company such as System Strengthening
+                    and/or
+                    Asset Shifting Deposit and/or Meter Box Revamping will be in the scope of the Customer.</li>
+                <li>MCB and/or ELCB at Meter will be in the scope of the Customer (if required).</li>
+                <li>We will provide a remote monitoring system.</li>
+                <li>SIM card or Wi-Fi facility to be borne by the Customer.</li>
+                <li>1-Year Non-Comprehensive Breakdown Maintenance Service.</li>
+                <li>Any changes that need to be done to the existing electrical infrastructure will be in the scope of
+                    the
+                    Customer.</li>
+                <li>Providing access to the Rooftop / Shed and a safe and secure storage will be in the scope of the
+                    Customer.</li>
+                <li>Water and power requirements during the execution of the Project will be in the scope of the
+                    Customer.
+                </li>
+                <li>All the terms & conditions will be applicable as per the current company policy.</li>
+                <li>Any Items not mentioned in the Bill of Material shall be charged extra and will be on the Account of
+                    the
+                    Customer.</li>
+                <li>Any major price escalation coming in module rates due to any reason, after the order placement and
+                    before procurement of the solar module, the customer shall bear the same escalation.</li>
+                <li>If any changes arrive in the Government Policy related to Solar, then the same will apply to the
+                    client.
+                </li>
+                <li>If the Government imposes basic customs duty or any other duty or charges on Solar Project items
+                    then
+                    our rates shall be revised accordingly</li>
+                <li>In case of any GST revisions from the Government side, then the same rate will be applicable in our
+                    offer (GST shall be applicable at the actual time of project billing).</li>
+                <li>In case of any extension in the Project Completion Period (3 Months) due to any modification in the
+                    existing roof or new construction is required for the Solar Power Plant then the contract rate will
+                    be
+                    revised as per the current market scenario and the customer will have to bear the difference as per
+                    new
+                    rate.</li>
+                <li>In case of any delay in payment as per terms by the customer side, the Customer will have to bear
+                    the
+                    difference as per the new rate.</li>
+                <li>The energy generation across all terrace spaces will be relatively uniform; however, various factors
+                    can
+                    cause deviations. For instance, if one flat owner manually cleans the panels daily while another
+                    does
+                    not, discrepancies in generation may occur. Additionally, accounting for standard DC losses, a
+                    variation
+                    of approximately ±3% to ±5% in generation can be expected, regardless of cleaning practices</li>
+                <li>Shadow analysis has been conducted based on conditions as of April 18, 2024. Should new
+                    infrastructure
+                    be developed in the future resulting in shadow-related issues, we cannot be held liable for any
+                    associated generation losses.</li>
+            </ul>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-seven">
+        <div class="page-seven-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br><br><br>
+            <div>
+                <p class="DMsans-700 fs-24 theme-color txt-center">Estimated Savings</p>
+                <p class="DMsans-300 fs-24 txt-center">The Estimated savings using solar for the next <br><b>25
+                        years</b> along with total savings, payback period and ROI.</p>
+                <br>
+                <div class="saving-grid">
+                    <div class="saving-card">
+                        <div class="saving-card-box">
+                            <p class="DMsans-500 fs-16 txt-center">Estimated Savings</p>
+                            <div class="sav-border"></div>
+                            <p class="DMsans-800 fs-22 txt-center">Rs. {{estimated_saving}}</p>
+                        </div>
+                        <br>
+                        <p class="DMsans-300 fs-16 txt-center">Price : <span class="DMsans-600">{{total_cost}}</span>
+                        </p>
+                    </div>
+                    <div class="saving-card">
+                        <div class="saving-card-box">
+                            <p class="DMsans-600 fs-16 txt-center">Payback Period</p>
+                            <div class="sav-border"></div>
+                            <p class="DMsans-800 fs-22 txt-center">{{payback_period}}</p>
+                        </div>
+                        <br>
+                        <p class="DMsans-300 fs-16 txt-center">Tax : <span class="DMsans-600">8.9 %</span></p>
+                    </div>
+                    <div class="saving-card">
+                        <div class="saving-card-box">
+                            <p class="DMsans-500 fs-16 txt-center">Return on Investment</p>
+                            <div class="sav-border"></div>
+                            <p class="DMsans-800 fs-22 txt-center">{{return_of_investment}} %</p>
+                        </div>
+                        <br>
+                        <p class="DMsans-300 fs-16 txt-center">Expected Life : <span
+                                class="DMsans-600">{{expected_life_year}}</span>
+                        </p>
+                    </div>
+                </div>
+                <br><br>
+                <div style="width: 59%;">
+                    <canvas class="my-2" id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-eight">
+        <div class="page-eight-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br><br>
+            <p class="DMsans-400 fs-24 txt-center">Predicted Energy Output from</p>
+            <p class="DMsans-700 fs-24 theme-color txt-center">{{project_size}}KWp Solar Plant</p>
+            <br>
+            <div class="weather-grid" style="padding: 0 40px; height: 100px;">
+                <div class="weather-grid-col"><img src="{{backend_url}}/weather1.png" alt=""></div>
+                <div class="weather-grid-col"><img src="{{backend_url}}/weather2.png" alt=""></div>
+                <div class="weather-grid-col"><img src="{{backend_url}}/weather3.png" alt=""></div>
+                <div class="weather-grid-col"><img src="{{backend_url}}/weather1.png" alt=""></div>
+            </div>
+            <br><br><br>
+            <div style="width: 59%;">
+                <canvas id="predictedEnergyOutput"></canvas>
+            </div>
+            <br><br>
+            <div style="padding: 0 20px;">
+                <p class="DMsans-600 fs-16">Actual Plant Generation output may very depending on local conditions like:
+                </p>
+                <ul class="DMsans-400 fs-16 note-list predict-list">
+                    <li>Dust Collection on surface of panels</li>
+                    <li>Availability of sufficent load to ensure complete utilization of energy generated</li>
+                </ul>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-nine">
+        <div class="page-nine-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br>
+            <p class="scope DMsans-700" style="margin-bottom: 16px;">Scope of work</p><br>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-01.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Government Liasoning Work</p>
+                    <div class="DMsans-400 fs-17 scope-list">
+                        <p>A. GEDA Approval</p>
+                        <p>B. Approval of the Electricity Distribution Company</p>
+                        <p>C. CEI Drawing Approval</p>
+                        <p>D. CEI Certiﬁcation</p>
+                        <p>E. Other Govt. Departmental Visits and approval</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-02.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Field Analysis & Civil Work</p>
+                    <div class="DMsans-400 fs-17 scope-list">
+                        <p>A. Panel Mounting Platforms</p>
+                        <p>B. Earthing Pits</p>
+                        <p>C. LT Electrification</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-03.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Preparing Design & Engineering Documents</p>
+                    <div class="DMsans-400 fs-17 scope-list">
+                        <p>A. SLD Drawing</p>
+                        <p>B. Layout Drawing</p>
+                        <p>C. Mounting Structure Designing</p>
+                        <p>D. Mounting Structure Design Certification</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <!-- page ten -->
+    <div class="page-nine">
+        <div class="page-nine-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br>
+            <p class="scope DMsans-700" style="margin-bottom: 16px;">Scope of work</p><br>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-04.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Material procurement handling</p>
+                    <div class="DMsans-400 fs-17 scope-list">
+                        <p>A. Specified material purchase & inspection</p>
+                        <p>B. Material transportation to the site and unloading</p>
+                        <p>C. Intra-plant material handling</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-05.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Structure, modules, inverters & AC/DC system installation
+                    </p>
+                    <div class="DMsans-400 fs-17 scope-list">
+                        <p>A. Structure erection</p>
+                        <p>B. Module Fitting</p>
+                        <p>C. AC/DC cable and conduit pipe laying</p>
+                        <p>D. Inverters & CMB fitting</p>
+                        <p>E. ESE lightning arresters fitting</p>
+                    </div>
+                </div>
+            </div>
+            <div class="scope-card">
+                <div class="scope-card-img"><img src="{{backend_url}}/sow-06.png" alt=""></div>
+                <div>
+                    <p class="DMsans-700 fs-24 theme-color">Meter installation and synchronization of the power plant
+                    </p>
+                </div>
+            </div>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-eleven">
+        <div class="page-ele-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br>
+            <p class="fs-23 DMsans-700 theme-color">Financial Consideration :</p>
+            <p class="DMsans-500 fs-18">Cost : Solar panels will experience an annual energy generation reduction of 1%
+                due to degradation in their generation capacity, with a subsequent annual reduction of 0.4% in the
+                following years.</p>
+            <p class="DMsans-500 fs-18">AMC : Starting from the fifth year after the Commercial Operation Date (COD), a
+                non-comprehensive Annual Maintenance Contract (AMC) will incure an additional annual cost of INR 0.5 per
+                Watt (exceptions apply).</p>
+            <br>
+            <p class="fs-23 DMsans-700 theme-color">Terms & Conditions :</p>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Price :</span> The prices of all materials
+                are calculated based on the prevailing market rates, considering the current import duty, safeguard
+                duty, and the foreign exchange rate of INR to USD as of the date of signing the agreement. Any changes
+                to these factors at the time of material procurement will be applicable as per the prevailing rates on
+                the procurement date.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Taxes & Duties on EPC :</span> GST rates,
+                Customs Duty and Safeguard Duty are based on the prevailing rates at the time of this offer and will be
+                charged at actual rates applicable on the supply date</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Guarantees & Warranties :</span> Guarantees
+                for all Solar PV Power Plant components will align with those provided by the Original Equipment
+                Manufacturers (OEMs). Solar PV panels come with a normative performance warranty of 25–30 years, solar
+                inverters with a warranty of 5–10 years, and Balance of System (BOS) components with a 1 year warranty,
+                as per OEM commitments.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Force Majeure :</span> All performance
+                conditions under this offer are subject to standard force majeure provisions.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Validity of Offer :</span> This offer
+                remains valid for 7 days from the date of issuance and is subject to written confirmation thereafter.
+            </p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Interruption in Work :</span> The customer
+                must avoid any interruptions or actions that may delay, complicate, or increase the cost of the work
+                being carried out by Solnce Private Energy Limited.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Deemed Export of Power :</span> The project
+                will be considered commissioned once Solnce Energy Private Limited has successfully evacuated the
+                generated power to the customer’s grid. If Solnce Energy Private Limited fulfills all its obligations
+                under the scope defined in the Purchase Order, but the project cannot be commissioned due to actions or
+                inactions by the customer or unavailability of the customer’s grid, the project will be deemed
+                commissioned, and Solnce Private Energy Limited’s obligations will be considered fulfilled</p><br>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-eleven">
+        <div class="page-ele-padding">
+            <div class="page-four-logo">
+                <img src="{{backend_url}}/solnce-blue.svg" alt="">
+            </div>
+            <br><br><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Security and Safety :</span> Upon
+                delivery of supplies to the customer’s site in good condition, the customer assumes responsibility
+                for the safety and security of the materials until they are handed over to the designated personnel
+                of Solnce Energy Private Limited for installation. In the event of public disturbances at the site
+                not attributable to Solnce Energy Private Limited, the customer shall address and resolve such
+                issues at their own risk and cost to ensure the smooth execution of the project. Additionally, the
+                customer is responsible for providing safety and security for Solnce Energy Private Limited
+                personnel working on-site. Any delays or material damage caused by public disturbances will be the
+                customer’s responsibility and must be compensated accordingly.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Insurance :</span> After the
+                commissioning of the solar power plant, the customer must arrange suitable asset insurance at their
+                own expense, as the asset will be registered in the customer’s name.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Publicity Rights :</span> The customer
+                grants irrevocable and unconditional consent to Solnce Energy Private Limited to issue press
+                releases, announcements, or use data, photographs, and designs of the solar power plant for
+                publicity or marketing purposes. Such usage will not be defamatory to the customer in any manner.
+            </p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Arbitration :</span> Any disputes,
+                including claims under applicable law, shall be resolved under the provisions of the Arbitration and
+                Conciliation Act, 1996, as amended or re-enacted. The arbitral tribunal will comprise two
+                arbitrators appointed by each party, with a third arbitrator appointed by the two party-nominated
+                arbitrators. The arbitration seat shall be Gujarat, India.</p><br>
+            <p class="fs-17 DMsans-400"><span class="DMsans-600 theme-color">Governing Law & Jurisdiction :</span>
+                This Proposal and any resultant agreement will be governed by the laws of India. The courts in
+                Gujarat, India, shall have exclusive jurisdiction over any disputes arising hereunder. The remedies
+                outlined in this Proposal or agreement do not limit the parties' legal, equitable, or other remedies
+                for breaches or potential breaches. Any party may seek injunctive relief from a competent court to
+                protect its interests.</p><br>
+        </div>
+        <p class="footer DMsans-400"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="page-thirteen">
+        <div class="page-13-logo">
+            <img src="{{backend_url}}/solnce-white.svg" alt="">
+        </div>
+        <p class="thank-txt DMsans-700 txt-center">Thanking you,<br> Yours Sincerely</p>
+        <p class="app-txt DMsans-400 txt-center fs-24">Download the app now</p>
+        <div class="app-white">
+            <a href=""><img src="{{backend_url}}/app-store-white.png" alt=""></a>
+            <a href=""><img src="{{backend_url}}/gp-store-white.png" alt=""></a>
+        </div>
+
+        <div class="page-13-footer">
+            <div class="social-white" style="margin-bottom: 10px;">
+                <div class="social-white-txt">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/mail-fill.svg" /></div>
+                    <a href="mailto:support@solnceenergy.com" class="DMsans-500 fs-16">support@solnceenergy.com</a>
+                </div>
+                <div class="social-white-txt">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/phone.svg" /></div>
+                    <a href="tel:7041166814" class="DMsans-500 fs-16">+91-70411 66814</a>
+                </div>
+                <div class="social-white-txt">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/web.svg" /></div>
+                    <a href="https://www.solnceenergy.com" class="DMsans-500 fs-16">www.solnceenergy.com</a>
+                </div>
+            </div>
+            <div class="social-white-txt">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/pin.svg" /></div>
+                <a href="" class="DMsans-500 fs-16">604-605, Avadh Kontina, Vip Road, Near CB Patel Club, Surat, Gujarat
+                    395007</a>
+            </div>
+        </div>
+        <div class="page-13-before">
+            <img src="{{backend_url}}/page-last.png" alt="">
+        </div>
+    </div>
+
+    <script>
+        const project_size = {{ project_size }}
+        const total_cost = {{ total_cost }}
+        const generation_calculation = [
+            { month: "Jan", output: (project_size * 31 * 3.98).toFixed(2) },
+            { month: "Fab", output: (project_size * 28 * 4.37).toFixed(2) },
+            { month: "Mar", output: (project_size * 31 * 4.95).toFixed(2) },
+            { month: "Apr", output: (project_size * 30 * 4.86).toFixed(2) },
+            { month: "May", output: (project_size * 31 * 4.8).toFixed(2) },
+            { month: "Jun", output: (project_size * 30 * 3.95).toFixed(2) },
+            { month: "Jul", output: (project_size * 31 * 3.09).toFixed(2) },
+            { month: "Aug", output: (project_size * 31 * 2.95).toFixed(2) },
+            { month: "Sep", output: (project_size * 30 * 3.7).toFixed(2) },
+            { month: "Oct", output: (project_size * 31 * 4.12).toFixed(2) },
+            { month: "Nov", output: (project_size * 30 * 3.97).toFixed(2) },
+            { month: "Dec", output: (project_size * 31 * 3.69).toFixed(2) },
+        ]
+        const ctx = document.getElementById('myChart');
+        const cashFlow = Array.from({ length: 25 }).map((_, i) => i).reduce((acc, item) => {
+            const preAccVal = acc[item - 1]
+            if (item === 0) {
+                const solar_unit_production = (project_size * 4 * 365).toFixed(2);
+                const net_solar_saving = (solar_unit_production * 7.4).toFixed(2);
+                const cash_flow = (net_solar_saving - total_cost).toFixed(2);
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            } else if (item === 1) {
+                const solar_unit_production = (Number(preAccVal.solar_unit_production) - (Number(preAccVal.solar_unit_production) * 0.025)).toFixed(2);
+                const net_solar_saving = (Number(solar_unit_production) * (Number(preAccVal.net_solar_saving) / Number(preAccVal.solar_unit_production))).toFixed(2);
+                const cash_flow = (Number(net_solar_saving) + Number(preAccVal.cash_flow)).toFixed(2);
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            } else {
+                const solar_unit_production = (Number(preAccVal.solar_unit_production) - (Number(acc[1].solar_unit_production) * 0.007)).toFixed(2);
+                const net_solar_saving = (Number(solar_unit_production) * (Number(preAccVal.net_solar_saving) / Number(preAccVal.solar_unit_production))).toFixed(2)
+                const cash_flow = (Number(net_solar_saving) + Number(preAccVal.cash_flow)).toFixed(2)
+                acc.push({
+                    solar_unit_production,
+                    net_solar_saving,
+                    cash_flow,
+                })
+            }
+            return acc
+        }, []).map(item => item.cash_flow)
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Array.from({ length: 25 }).map((_, i) => i).map((item, index) => (new Date().getFullYear() + index)),
+                datasets: [{
+                    label: 'Saving',
+                    data: cashFlow,
+                    borderWidth: 1,
+                    backgroundColor: '#0067CA',
+                    borderColor: '#0067CA',
+                }]
+            },
+            options: {
+                devicePixelRatio: 2,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        const predictedEnergyCTX = document.getElementById('predictedEnergyOutput');
+
+        new Chart(predictedEnergyCTX, {
+            type: 'bar',
+            data: {
+                labels: generation_calculation?.map((calc) => calc.month),
+                datasets: [{
+                    label: 'Output (KW)',
+                    data: generation_calculation?.map((calc) => Number(calc.output)),
+                    borderWidth: 1,
+                    backgroundColor: '#0067CA',
+                    borderColor: '#0067CA',
+                }]
+            },
+            options: {
+                devicePixelRatio: 2,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

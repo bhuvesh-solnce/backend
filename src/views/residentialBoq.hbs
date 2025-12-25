@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "DM Sans", serif;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        @page {
+            margin: 2rem 0rem 0rem;
+        }
+
+        .page {
+            height: calc(100vh);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid #0B65BC;
+            border-collapse: collapse;
+            padding: 0.5rem 1rem;
+        }
+
+        th {
+            background-color: #0B65BC;
+            color: white;
+            font-weight: normal;
+            min-height: 52px;
+            height: 52px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        tr {
+            min-height: 52px;
+            height: 52px;
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        tr>td:nth-child(n/2) {
+            background-color: lightgray;
+        }
+
+        .p2 {
+            width: 100%;
+            table-layout: fixed;
+            page-break-inside: auto;
+            border-collapse: collapse;
+        }
+
+        .p2 tr>td {
+            font-weight: 500;
+            font-size: 13.5px;
+        }
+
+        .fill-icon {
+            height: 28px;
+            width: 28px;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%
+        }
+
+        .icon-image {
+            width: 14px;
+            height: 14px;
+        }
+
+        .footer-text {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .footer {
+            width: 100vw;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .page-content {
+            padding: 0rem 2.5rem;
+            position: relative;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B65BC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page text-sm relative">
+        <div class="page-content flex flex-col gap-[1rem] justify-between">
+            <div class="flex flex-col gap-[1rem]">
+                <p class="text-xl font-semibold">Bill of Material</p>
+                <table class="text-center text-xs p2">
+                    <thead>
+                        <tr>
+                            <th class="w-[80px]">Sr. No</th>
+                            <th style="width: 30vw;">Item</th>
+                            <th style="min-width: 70vw;">Specifications/Capacity</th>
+                            <th style="min-width: 70vw;">Make</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each tableRows}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{name}}</td>
+                            <td>{{value}}</td>
+                            <td>{{company}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                    {{!-- <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Solar PV Module</td>
+                            <td>{{solar_pv_module}}</td>
+                            <td>{{solar_company}}</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Solar On Grid Inverter</td>
+                            <td>{{inverter_capacity}}</td>
+                            <td>{{inverter_company}}</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Module Mounting Structure</td>
+                            <td>{{structure_type}}</td>
+                            <td>{{structure_company}}</td>
+                        </tr>
+                        {{#if inverter_capacity}}
+                        <tr>
+                            <td>4</td>
+                            <td>Conector</td>
+                            <td>{{mc4_type}}</td>
+                            <td>{{mc4_company}}</td>
+                        </tr>
+                        {{/if}}
+                        {{#if dc_cable_specification}}
+                        <tr>
+                            <td>5</td>
+                            <td>DC Cable</td>
+                            <td>{{dc_cable_specification}}</td>
+                            <td>{{dc_cable_company}}</td>
+                        </tr>
+                        {{/if}}
+                        <tr>
+                            <td>6</td>
+                            <td>DC Distribution Box (DCDB)</td>
+                            <td>{{dcdb_model}}</td>
+                            <td>L&T/ Schneider / ELMEX</td>
+                        </tr>
+                        {{#if ac_cable_company}}
+                        <tr>
+                            <td>7</td>
+                            <td>AC Cable</td>
+                            <td>{{ac_cable_company}}</td>
+                            <td>{{ac_cable_specification}}</td>
+                        </tr>
+                        {{/if}}
+                        <tr>
+                            <td>8</td>
+                            <td>AC Distribution Box (ACDB)</td>
+                            <td>{{acdb_model}}</td>
+                            <td>L&T/ Schneider / ELMEX</td>
+                        </tr>
+                        {{#if cb_specification}}
+                        <tr>
+                            <td>9</td>
+                            <td>Main Circuit Breaker</td>
+                            <td>{{cb_specification}}</td>
+                            <td>{{cb_company}}</td>
+                        </tr>
+                        {{/if}}
+                        <tr>
+                            <td>10</td>
+                            <td>Earthing Pit</td>
+                            <td>As per IS Standard</td>
+                            <td>As per IS Standard</td>
+                        </tr>
+                        {{#if e_cable_specification}}
+                        <tr>
+                            <td>11</td>
+                            <td>Earthing strip/ Wire</td>
+                            <td>{{e_cable_specification}}</td>
+                            <td>{{e_cable_company}}</td>
+                        </tr>
+                        {{/if}}
+                        <tr>
+                            <td>12</td>
+                            <td>Remote Monitoring System</td>
+                            <td>As per Inverter</td>
+                            <td>As per Inverter</td>
+                        </tr>
+                    </tbody> --}}
+                </table>
+            </div>
+            <div class="stamp flex justify-between items-center">
+                <div>
+                    <p style="font-size: 15px;">Thank you for your business!</p>
+                    <p class="text-xl" style="color: #0B65BC; font-weight: 600;">Solnce Energy Private Limited</p>
+                    <p style="font-size: 22px; margin-top:5px;">GST : 24ABGCS3520F1C0</p>
+                </div>
+                <img class="w-[120px] object-cover" src="{{backend_url}}/solnce-stamp.svg" />
+            </div>
+        </div>
+        <div class="footer text-xs flex flex-col gap-2 bg-primary text-white w-full px-[3.5rem] py-[1rem]">
+            <div class="flex justify-between">
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/mail-fill.svg" /></div>
+                    <p class="footer-text"><a href="mailto:support@solnceenergy.com">support@solnceenergy.com</a>
+                    </p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/phone.svg" /></div>
+                    <p class="footer-text"><a href="tel:7041166814">+91-70411 66814</a></p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/web.svg" /></div>
+                    <p class="footer-text"><a href="https://www.solnceenergy.com">www.solnceenergy.com</a></p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1">
+                <div class="fill-icon"><img class="icon-image" src="{{backend_url}}/pin.svg" /></div>
+                <p class="footer-text">604-605, Avadh Kontina, Vip Road, Near CB Patel Club, Surat, Gujarat 395007
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

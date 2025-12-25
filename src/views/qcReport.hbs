@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            box-sizing: content-box;
+        }
+
+        body {
+            width: 100vw;
+        }
+
+        .page {
+            height: calc(100vh);
+            padding: 0rem 3.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        tr,
+        td,
+        th {
+            border: 1px solid rgba(0, 0, 0, 0.419);
+            border-collapse: collapse;
+            padding: 0.4rem 0.8rem;
+            text-align: start;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #0B65BC;
+            color: white;
+            font-weight: normal;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .page-content {
+            height: calc(100vh - (100px + 2rem));
+        }
+
+        .price-summary-heading {
+            word-break: keep-all;
+            font-weight: bold;
+        }
+
+        .price-summary-content {
+            flex-grow: 1;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0B65BC',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="page relative">
+        <div class="page-content flex flex-col justify-between">
+            <div class="flex flex-col gap-[2rem]">
+                <section>
+                    <div class="flex w-[220px] flex-col relative">
+                        <img src="{{backend_url}}/solnce-logo.svg" />
+                        <div class="font-semibold text-[0.9rem] whitespace-nowrap">Solnce Energy Private Limited</div>
+                    </div>
+                </section>
+                {{!-- <section>
+                    <h2>FORM 1 – GENERAL SYSTEM DATA</h2>
+                    <table class="text-center text-sm" width="100%" style="margin-top: 4px;">
+                        <tbody>
+                            <tr>
+                                <td width="50%">Project/Site address</td>
+                                <td width="50%"></td>
+                            </tr>
+                            <tr>
+                                <td width="50%">Rated system power (kW DC)</td>
+                                <td width="50%"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section> --}}
+
+                <section>
+                    <h2>FORM – COMMISSIONING INSPECTION CHECKLIST</h2>
+                    <table class="text-center text-sm" width="100%" style="margin-top: 4px;">
+                        <tbody>
+                            {{#each groupedTitles}}
+                            <tr style="background-color: #0B65BC; color: white; font-weight: 500; font-size: 16px;">
+                                <td width="50%" colspan="2" style="text-align: center; vertical-align: middle;">{{@key}}
+                                </td>
+                                {{#if (eq @index 0)}}
+                                <td width="50%" style="text-align: center;">Str. Earthing, Panel, DCDB Inverter, ACDB
+                                    ELCB</td>
+                                {{else}}
+                                <td width="50%" style="text-align: center;"></td>
+                                {{/if}}
+                            </tr>
+                            {{#each this}}
+                            <tr>
+                                <td class="w-[70px]">
+                                    <input type="checkbox" checked>
+                                </td>
+                                <td width="50%">{{this.title}}</td>
+                                <td width="50%">{{this.value}}
+                                    {{#each this.images}}
+                                    {{#if (and (eq @index 0) this.value)}}<br /><br />{{/if}}
+                                    {{#unless (eq @index 0)}}<br />{{/unless}}
+                                    <img src="{{this}}" style="max-width: 200px; height: auto;">
+                                    {{/each}}
+
+                                </td>
+                            </tr>
+                            {{/each}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
